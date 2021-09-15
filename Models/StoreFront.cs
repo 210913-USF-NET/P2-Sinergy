@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Models
 {
     public class StoreFront
@@ -6,6 +8,8 @@ namespace Models
 
         public string Name { get; set; }
         public string Address { get; set; }
+
+        public List<Inventory> Inventories { get; set; }
 
         public override string ToString()
         {

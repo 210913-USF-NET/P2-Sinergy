@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Models
 {
     public class Customer
     {
-        public Customer() {}
+        public Customer() { }
 
         //Constructor overloading (this is an example of polymorphism)
         //The constructor behaves differently
@@ -25,10 +26,12 @@ namespace Models
         }
 
         //Property
-        public string Name {get; set;}
+        public string Name { get; set; }
 
-        public int Age {get; set;}
+        public int Age { get; set; }
 
-        public string City {get; set;}
+        public string City { get; set; }
+
+        public List<Order> Orders { get; set; }
     }
 }
