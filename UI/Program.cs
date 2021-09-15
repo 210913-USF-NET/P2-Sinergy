@@ -1,5 +1,7 @@
 ﻿using System;
 using Models;
+using StoreBL;
+using DL;
 
 namespace UI
 {
@@ -8,17 +10,7 @@ namespace UI
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to My Store!");
-            Customer newCustomer = new Customer();
-            newCustomer.Age = 1000;
-
-            StoreFront myStore = new StoreFront() {
-                Name = "MY Store",
-                Address = "123 NW abc ave, Portland, OR"
-            };
-            Console.WriteLine(myStore.ToString());
-            myStore.Name = Console.ReadLine();
-            Console.WriteLine(myStore.ToString());
-
+            new MainMenu(new BL(new ExampleRepo())).Start();
         }
     }
 }
