@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using DL;
 using Models;
 
-namespace StoreBL
+namespace CacBL
 {
     public class BL : IBL
     {
@@ -12,10 +12,6 @@ namespace StoreBL
         public BL(IRepo repo)
         {
             _repo = repo;
-        }
-        public List<StoreFront> GetAllStoreFronts()
-        {
-            return _repo.GetAllStoreFronts();
         }
     }
 }
