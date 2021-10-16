@@ -1,6 +1,6 @@
 ﻿using System;
 using Models;
-using StoreBL;
+using CacBL;
 using DL;
 
 namespace UI
@@ -9,8 +9,6 @@ namespace UI
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to My Store!");
-            new MainMenu(new BL(new ExampleRepo())).Start();
         }
     }
 }

@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using Models;
 
-namespace DL
+namespace CacBL
 {
-    public interface IRepo
+    public interface IBL
     {
     }
 }
