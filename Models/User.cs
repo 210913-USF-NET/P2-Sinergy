@@ -21,8 +21,6 @@ namespace Models
         {
             this.Account = Account;
         }
-
-        //Property
         public int UserID { get; set; }
 
         public string Email { get; set; }
