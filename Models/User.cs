@@ -12,25 +12,23 @@ namespace Models
             this.UserID = UserID;
         }
 
-        public User(int UserID, string email) : this(UserID)
+        public User(int UserID, string Email) : this(UserID)
         {
-            this.email = email;
+            this.Email = Email;
         }
 
-        public User(int UserID, string email, string account) : this(UserID, email)
+        public User(int UserID, string Email, string Account) : this(UserID, Email)
         {
-            this.account = account;
+            this.Account = Account;
         }
-
-        public User(int UserID, string email, string account, bool admin) : this(UserID, email, account) {}
 
         //Property
         public int UserID { get; set; }
 
-        public string email { get; set; }
+        public string Email { get; set; }
 
-        public string account { get; set; }
+        public string Account { get; set; }
 
-        public bool admin { get; set; }
+        public bool Admin { get; set; }
     }
 }
