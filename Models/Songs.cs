@@ -1,3 +1,4 @@
+
 namespace Models
 {
     public class Songs
@@ -15,5 +16,8 @@ namespace Models
         public string URI { get; set; }
         public string URL { get; set; }
         public int InformationID { get; set; }
+        public int SongsID { get; set; }
+
+
     }
 }
