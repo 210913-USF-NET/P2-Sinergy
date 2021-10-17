@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Information
+namespace Models
 {
     public class Information
     {
