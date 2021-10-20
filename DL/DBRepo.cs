@@ -11,8 +11,8 @@ namespace DL
 {
     public class DBRepo : IRepo
     {
-        private CacophanyDBContext _context;
-        public DBRepo(CacophanyDBContext context)
+        private CacophonyDBContext _context;
+        public DBRepo(CacophonyDBContext context)
         {
             _context = context;
         }

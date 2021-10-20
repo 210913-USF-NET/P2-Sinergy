@@ -8,7 +8,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace DL.Migrations
 {
-    [DbContext(typeof(CacophanyDBContext))]
+    [DbContext(typeof(CacophonyDBContext))]
     partial class CacophanyDBContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

@@ -43,14 +43,14 @@ namespace Cacophony.Controllers
             
         }
 
-        // GET api/<PlaylistController>/5
-        [HttpGet("{id}")]
-        public async Task<IEnumerable<Playlist>> GetPlaylistByUserIdAsync(int id)
-        {
-            List<Playlist> getPlaylists = await _bl.GetPlaylistsByUserIdAsync(id);
-            return getPlaylists;
+        //// GET api/<PlaylistController>/5
+        //[HttpGet("{id}")]
+        //public async Task<IEnumerable<Playlist>> GetPlaylistByUserIdAsync(int id)
+        //{
+        //    List<Playlist> getPlaylists = await _bl.GetPlaylistsByUserIdAsync(id);
+        //    return getPlaylists;
 
-        }
+        //}
 
         // POST api/<PlaylistController>
         [HttpPost]

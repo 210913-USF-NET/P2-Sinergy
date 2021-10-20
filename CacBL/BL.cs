@@ -35,7 +35,7 @@ namespace CacBL
             return await _repo.UpdatePlaylistAsync(updatedPlaylist);
         }
 
-        public async Task RemovePlaylistsAsync(int id)
+        public async Task RemovePlaylistAsync(int id)
         {
             await _repo.RemovePlaylistAsync(id);
         }
@@ -63,6 +63,8 @@ namespace CacBL
         {
             await _repo.RemoveUserAsync(id);
         }
+
+        
     }   
     
 }

@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace DL
 {
-    public class CacophanyDBContext : DbContext
+    public class CacophonyDBContext : DbContext
     {
-        public CacophanyDBContext() : base() { }
-        public CacophanyDBContext(DbContextOptions options) : base(options) { }
+        public CacophonyDBContext() : base() { }
+        public CacophonyDBContext(DbContextOptions options) : base(options) { }
         public DbSet<Playlist> Playlists {get; set;}
         public DbSet<Songs> Songs { get; set; }
         public DbSet<User> Users { get; set; }

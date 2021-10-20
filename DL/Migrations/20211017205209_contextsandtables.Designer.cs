@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace DL.Migrations
 {
-    [DbContext(typeof(CacophanyDBContext))]
+    [DbContext(typeof(CacophonyDBContext))]
     [Migration("20211017205209_contextsandtables")]
     partial class contextsandtables
     {
