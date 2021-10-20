@@ -55,6 +55,7 @@ namespace Cacophony.Controllers
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
+            //edit playlist
         }
 
         // DELETE api/<PlaylistController>/5

@@ -22,9 +22,9 @@ namespace Cacophony.Controllers
 
         // GET: api/<UserController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<User> Get()
         {
-            return new string[] { "value1", "value2" };
+            return _bl.GetAllUsers();
         }
 
         // GET api/<UserController>/5
@@ -54,6 +54,7 @@ namespace Cacophony.Controllers
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
+            //update User
         }
 
         // DELETE api/<UserController>/5
