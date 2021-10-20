@@ -13,7 +13,6 @@ namespace Models
             this.InformationID = InformationID;
         }
         public int PlaylistID { get; set; }
-        public string URI { get; set; }
         public string URL { get; set; }
         public int InformationID { get; set; }
         public int SongsID { get; set; }
