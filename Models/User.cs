@@ -23,8 +23,6 @@ namespace Models
         }
         public int UserID { get; set; }
 
-        public string user { get; set; }
-
         public string Email { get; set; }
 
         public string Account { get; set; }
