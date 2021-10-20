@@ -34,12 +34,15 @@ namespace DL
                 .FirstOrDefaultAsync(r => r.PlaylistID == id);
         }
 
-        public List<Playlist> GetPlaylistByUserId(int id)
+        public async Task<List<Playlist>> GetPlaylistsByUserIdAsync(int id)
         {
-            return _context.Playlists.Where(p => p.UserID == id)
-                .Select(i => new Playlist()).ToList();
+            return await _context.Playlists.Where(p => p.UserID == id)
+                .Select(i => new Playlist()).ToListAsync();
                 
         }
+
+
+        //update playlist method
 
 
         //User Methods//
@@ -59,9 +62,9 @@ namespace DL
                 .FirstOrDefaultAsync(r => r.UserID == id);
         }
 
-        public List<User> GetAllUsers()
+        public async Task<List<User>> GetAllUsersAsync()
         {
-            return _context.Users
+            return await _context.Users
                 .Select(
                 user => new User()
                 {
@@ -69,7 +72,7 @@ namespace DL
                     Account = user.Account,
                     Email = user.Email
                 }
-             ).ToList();
+             ).ToListAsync();
         }
     }
 

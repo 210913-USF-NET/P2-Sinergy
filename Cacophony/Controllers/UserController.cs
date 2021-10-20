@@ -22,9 +22,9 @@ namespace Cacophony.Controllers
 
         // GET: api/<UserController>
         [HttpGet]
-        public IEnumerable<User> Get()
+        public async Task<IEnumerable<User>> GetAsync()
         {
-            return _bl.GetAllUsers();
+            return await _bl.GetAllUsersAsync();
         }
 
         // GET api/<UserController>/5

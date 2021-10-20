@@ -8,9 +8,9 @@ namespace DL
     {
         Task<Playlist> AddPlaylistAsync(Playlist playlist);
         Task<Playlist> GetPlaylistByIdAsync(int id);
-        List<Playlist> GetPlaylistByUserId(int id);
+        Task<List<Playlist>> GetPlaylistsByUserIdAsync(int id);
         Task<User> AddUserAsync(User user);
         Task<User> GetUserByIdAsync(int id);
-        List<User> GetAllUsers();
+        Task<List<User>> GetAllUsersAsync();
     }
 }
