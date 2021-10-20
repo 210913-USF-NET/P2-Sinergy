@@ -49,7 +49,13 @@ namespace DL
 
             return new Playlist()
             {
-                PlaylistID = updatedPlaylist.PlaylistID
+                PlaylistID = updatedPlaylist.PlaylistID,
+                UserID = updatedPlaylist.UserID,
+                user = updatedPlaylist.user,
+                SongCount = updatedPlaylist.SongCount,
+                Timeframe = updatedPlaylist.Timeframe,
+                Date = updatedPlaylist.Date
+
             };
         }
 
@@ -92,6 +98,28 @@ namespace DL
                     Email = user.Email
                 }
              ).ToListAsync();
+        }
+
+        public async Task<User> UpdateUserAsync(User updatedUser)
+        {
+            _context.Users.Update(updatedUser);
+            await _context.SaveChangesAsync();
+            _context.ChangeTracker.Clear();
+
+            return new User()
+            {
+                UserID = updatedUser.UserID,
+                Email = updatedUser.Email,
+                Account = updatedUser.Account
+
+            };
+        }
+
+        public async Task RemoveUserAsync(int id)
+        {
+            _context.Users.Remove(await GetUserByIdAsync(id));
+            await _context.SaveChangesAsync();
+            _context.ChangeTracker.Clear();
         }
     }
 

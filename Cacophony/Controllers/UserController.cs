@@ -52,15 +52,17 @@ namespace Cacophony.Controllers
 
         // PUT api/<UserController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<IActionResult> Put(int id, [FromBody] User newUser)
         {
-            //update User
+            User updatedUser = await _bl.UpdateUserAsync(newUser);
+            return Ok(newUser);
         }
 
         // DELETE api/<UserController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
+            await _bl.RemoveUserAsync(id);
         }
     }
 }

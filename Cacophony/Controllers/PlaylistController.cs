@@ -29,7 +29,7 @@ namespace Cacophony.Controllers
 
         // GET api/<PlaylistController>/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetPlaylistById(int id)
+        public async Task<IActionResult> GetPlaylistByIdAsync(int id)
         {
             Playlist getPlaylist = await _bl.GetPlaylistByIdAsync(id);
             if (getPlaylist != null)
@@ -45,7 +45,7 @@ namespace Cacophony.Controllers
 
         // GET api/<PlaylistController>/5
         [HttpGet("{id}")]
-        public async Task<IEnumerable<Playlist>> GetPlaylistByUserId(int id)
+        public async Task<IEnumerable<Playlist>> GetPlaylistByUserIdAsync(int id)
         {
             List<Playlist> getPlaylists = await _bl.GetPlaylistsByUserIdAsync(id);
             return getPlaylists;
@@ -62,9 +62,10 @@ namespace Cacophony.Controllers
 
         // PUT api/<PlaylistController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<IActionResult> Put(int id, [FromBody] Playlist newPlaylist)
         {
-            //edit playlist
+            Playlist updatedPlaylist = await _bl.UpdatePlaylistAsync(newPlaylist);
+                return Ok(updatedPlaylist);
         }
 
         // DELETE api/<PlaylistController>/5
