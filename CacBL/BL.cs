@@ -29,6 +29,11 @@ namespace CacBL
         {
             return await _repo.GetPlaylistsByUserIdAsync(id);
         }
+
+        public async Task RemovePlaylistsAsync(int id)
+        {
+            await _repo.RemovePlaylistAsync(id);
+        }
         public async Task<User> AddUserAsync(User user)
         {
             return await _repo.AddUserAsync(user);

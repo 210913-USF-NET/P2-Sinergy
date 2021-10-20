@@ -41,6 +41,25 @@ namespace DL
                 
         }
 
+        public async Task<Playlist> UpdatePlaylistAsync(Playlist updatedPlaylist)
+        {
+            _context.Playlists.Update(updatedPlaylist);
+            await _context.SaveChangesAsync();
+            _context.ChangeTracker.Clear();
+
+            return new Playlist()
+            {
+                PlaylistID = updatedPlaylist.PlaylistID
+            };
+        }
+
+        public async Task RemovePlaylistAsync(int id)
+        {
+            _context.Playlists.Remove(await GetPlaylistByIdAsync(id));
+            await _context.SaveChangesAsync();
+            _context.ChangeTracker.Clear();
+        }
+
 
         //update playlist method
 

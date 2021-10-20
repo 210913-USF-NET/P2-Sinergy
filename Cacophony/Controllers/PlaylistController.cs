@@ -29,7 +29,7 @@ namespace Cacophony.Controllers
 
         // GET api/<PlaylistController>/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
+        public async Task<IActionResult> GetPlaylistById(int id)
         {
             Playlist getPlaylist = await _bl.GetPlaylistByIdAsync(id);
             if (getPlaylist != null)
@@ -41,6 +41,15 @@ namespace Cacophony.Controllers
                 return NoContent();
             }
             
+        }
+
+        // GET api/<PlaylistController>/5
+        [HttpGet("{id}")]
+        public async Task<IEnumerable<Playlist>> GetPlaylistByUserId(int id)
+        {
+            List<Playlist> getPlaylists = await _bl.GetPlaylistsByUserIdAsync(id);
+            return getPlaylists;
+
         }
 
         // POST api/<PlaylistController>
@@ -60,8 +69,9 @@ namespace Cacophony.Controllers
 
         // DELETE api/<PlaylistController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
+            await _bl.RemovePlaylistAsync(id);
         }
     }
 }
