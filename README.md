@@ -1,7 +1,7 @@
 # Sample Proposal - Cacophony
  
 ## Overview  
-Cacophony is a web-based application for creating Spotify playlists based on your listening history. You can log in via Spotify authentication, create playlists of your top played songs over a given period of time, and view all your created playlists. A user can modify their playlist creation by changing the number of songs and/or the time period analyzed by Cacophony. In addition, a manager can view all the created playlists by all the users and track the most popular genres and artists that have been put in playlists.
+Cacophony is a web-based application for creating music playlists based on your listening history as tracked by Last.fm. You can log in via Spotify authentication, create playlists of your top played songs over a given period of time by providing your Last.fm username, and view all your created playlists. A user can modify their playlist creation by changing the number of songs and/or the time period analyzed by Cacophony. In addition, a manager can view all the created playlists by all the users and track the most popular genres and artists that have been put in playlists.
  
 ## Tables 
 1.	User table, for email address and Spotify account. 
@@ -36,6 +36,7 @@ Cacophony is a web-based application for creating Spotify playlists based on you
 -	Serilog
 -	Xunit
 -	Spotify API
+-   Last.fm API
 -	Azure Web Services
 -	GitHub Actions
 -	SonarCloud
