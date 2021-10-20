@@ -12,52 +12,51 @@ namespace Cacophony.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PlaylistController : ControllerBase
+    public class UserController : ControllerBase
     {
         private IBL _bl;
-        public PlaylistController(IBL bl)
+        public UserController(IBL bl)
         {
             _bl = bl;
         }
 
-        // GET: api/<PlaylistController>
+        // GET: api/<UserController>
         [HttpGet]
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
         }
 
-        // GET api/<PlaylistController>/5
+        // GET api/<UserController>/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
+        public async Task<IActionResult> GetAsync(int id)
         {
-            Playlist getPlaylist = await _bl.GetPlaylistByIdAsync(id);
-            if (getPlaylist != null)
+            User getUser = await _bl.GetUserByIdAsync(id);
+            if (getUser != null)
             {
-                return Ok(getPlaylist);
+                return Ok(getUser);
             }
             else
             {
                 return NoContent();
             }
-            
         }
 
-        // POST api/<PlaylistController>
+        // POST api/<UserController>
         [HttpPost]
-        public async Task<IActionResult> PostAsync([FromBody] Playlist newplaylist)
+        public async Task<IActionResult> PostAsync([FromBody] User newuser)
         {
-            Playlist addedPlaylist = await _bl.AddPlaylistAsync(newplaylist);
-            return Created("api/[controller]", addedPlaylist);
+            User addedUser = await _bl.AddUserAsync(newuser);
+            return Created("api/[controller]", addedUser);
         }
 
-        // PUT api/<PlaylistController>/5
+        // PUT api/<UserController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE api/<PlaylistController>/5
+        // DELETE api/<UserController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
