@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { AuthModule } from '@auth0/auth0-angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PlaylistMakerComponent } from './playlist-maker/playlist-maker.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { LoginComponent } from './login/login.component';
-import { LoginButtonComponent } from './components/login-button/login-button.component';
-import { AuthModule } from '@auth0/auth0-angular';
+import { environment } from 'src/environments/environment';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -15,12 +15,15 @@ import { AuthModule } from '@auth0/auth0-angular';
     PlaylistMakerComponent,
     NavBarComponent,
     LoginComponent,
-    LoginButtonComponent
+    AuthComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AuthModule
+    AuthModule.forRoot({
+      domain: environment.authDomain,
+      clientId: environment.authClientId
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

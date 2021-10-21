@@ -5,11 +5,11 @@
 
 export const environment = {
   production: false,
-  auth: {
-    domain: "dev-u95zl0ql.us.auth0.com",
-    clientId: "YDHUZA0pQLaH5xYdA5JxwLvjEL8AtMMO",
-    redirectUri: window.location.origin
-  }
+    authDomain: "dev-u95zl0ql.us.auth0.com",
+    authClientId: "YDHUZA0pQLaH5xYdA5JxwLvjEL8AtMMO",
+    redirectUri: window.location.origin,
+    APIUrl: 'https://cacophony.azurewebsites.net/'
+    //add Url once we get it from azure
 };
 
 /*
