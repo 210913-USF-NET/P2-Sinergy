@@ -7,6 +7,7 @@ import { PlaylistMakerComponent } from './playlist-maker/playlist-maker.componen
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { LoginComponent } from './login/login.component';
 import { LoginButtonComponent } from './components/login-button/login-button.component';
+import { AuthModule } from '@auth0/auth0-angular';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { LoginButtonComponent } from './components/login-button/login-button.com
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
