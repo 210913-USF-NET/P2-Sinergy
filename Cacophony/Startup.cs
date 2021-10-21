@@ -36,8 +36,8 @@ namespace Cacophony
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Cacophony", Version = "v1" });
             });
 
-            services.AddDbContext<CacophanyDBContext>(options =>
-            options.UseNpgsql(Configuration.GetConnectionString("CacophanyDB")));
+            services.AddDbContext<CacophonyDBContext>(options =>
+            options.UseNpgsql(Configuration.GetConnectionString("CacophonyDB")));
             services.AddScoped<IRepo, DBRepo>();
             services.AddScoped<IBL, BL>();
         }

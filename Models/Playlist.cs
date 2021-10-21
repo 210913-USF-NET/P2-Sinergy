@@ -14,7 +14,9 @@ namespace Models
             this.UserID = UserID;
         }
         public int PlaylistID { get; set; }
+        //public string Playlist name {get; set;}
         public int UserID { get; set; }
+        public string user { get; set; }
         public int SongCount { get; set; }
         public int Timeframe { get; set; }
         public DateTime Date { get; set; }
