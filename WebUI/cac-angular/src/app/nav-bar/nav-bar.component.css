@@ -1,0 +1,15 @@
+
+.navbar {
+    background-color: black;
+    height: 120px;
+}
+.navbar-brand {
+    transform: translateX(-50%);
+    left: 50%;
+    top: 10%;
+    position: absolute;
+}
+
+.nav-item {
+    color: white;
+}
