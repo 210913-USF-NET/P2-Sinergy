@@ -17,7 +17,9 @@ export class AuthComponent implements OnInit {
   ngOnInit(): void {
     this.auth.isAuthenticated$.subscribe((isLoggedIn) => {
       console.log('is auth?', isLoggedIn);
-      console.log(this.auth.user$); 
+      this.auth.user$.subscribe((user) => {
+        console.log(user); 
+      })
     })
   }
 
