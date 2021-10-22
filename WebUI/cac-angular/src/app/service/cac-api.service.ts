@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http'
 })
 export class CacApiService {
 
-  rootUrl: string = 'https://cacophony.azurewebsites.net/';
+  rootUrl: string = 'https://cacophony.azurewebsites.net/api/User';
 
   constructor(private http: HttpClient) { }
 
