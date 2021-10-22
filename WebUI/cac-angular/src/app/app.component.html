@@ -1,7 +1,10 @@
 <app-nav-bar></app-nav-bar>
+<div></div>
 <div class="colorground">
+    <div style="position:absolute; left: 540px; top: 160px">
+        <a routerLink="/login"><button class="btn btn-success" > Login </button></a>
+        <router-outlet></router-outlet>
+    </div>
 
-    <a routerLink="/login"><button class="btn btn-success" > Login </button></a>
-    <router-outlet></router-outlet>
-
+        <app-playlist-maker></app-playlist-maker>
 </div>

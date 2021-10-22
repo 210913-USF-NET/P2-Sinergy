@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CacApiService } from '../Services/cac-api.service';
+import { CacApiService } from '../service/cac-api.service';
 
 @Component({
   selector: 'app-user-list',
