@@ -18,7 +18,11 @@
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
+<<<<<<< HEAD
+    "chart.js": "^3.5.1",
+=======
     "@auth0/auth0-angular": "^1.7.0",
+>>>>>>> 1c30c845653a5f4f24dc13dcd061cede79df464d
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
