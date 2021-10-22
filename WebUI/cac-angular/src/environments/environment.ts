@@ -1,9 +1,15 @@
+
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+    authDomain: "dev-u95zl0ql.us.auth0.com",
+    authClientId: "YDHUZA0pQLaH5xYdA5JxwLvjEL8AtMMO",
+    redirectUri: window.location.origin,
+    APIUrl: 'https://cacophony.azurewebsites.net/'
+    //add Url once we get it from azure
 };
 
 /*
