@@ -12,6 +12,8 @@ import { environment } from 'src/environments/environment';
 import { AuthComponent } from './auth/auth.component';
 import { ChartsComponent } from './charts/charts.component';
 import { UserFormComponent } from './user-form/user-form.component';
+import { MoreChartsComponent } from './more-charts/more-charts.component';
+import { Chart } from 'chart.js';
 
 
 
@@ -25,7 +27,8 @@ import { UserFormComponent } from './user-form/user-form.component';
     UserListComponent,
     AuthComponent,
     ChartsComponent,
-    UserFormComponent
+    UserFormComponent,
+    MoreChartsComponent
 
   ],
   imports: [
