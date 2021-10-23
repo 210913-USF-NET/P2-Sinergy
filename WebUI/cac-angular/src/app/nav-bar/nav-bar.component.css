@@ -1,9 +1,11 @@
 
 .navbar {
+    display: flex;
     background-color: black;
     height: 120px;
 }
 .navbar-brand {
+    display: flex;
     transform: translateX(-50%);
     left: 50%;
     top: 10%;
