@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
+import { User } from '../models/User';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,13 @@ export class CacApiService {
 
   constructor(private http: HttpClient) { }
 
-  getAllUsers(): Promise<[]>
+  getAllUsers(): Promise<User[]>
   {
-    return this.http.get<[]>(this.rootUrl).toPromise();
+    return this.http.get<User[]>(this.rootUrl).toPromise();
+  }
+
+  addUser(User: User): Promise<User>
+  {
+    return this.http.post<User>(this.rootUrl, User).toPromise();
   }
 }

@@ -29,7 +29,7 @@ namespace Cacophony.Controllers
 
         // GET api/<PlaylistController>/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetPlaylistByIdAsync(int id)
+        public async Task<IActionResult> GetAsync(int id)
         {
             Playlist getPlaylist = await _bl.GetPlaylistByIdAsync(id);
             if (getPlaylist != null)

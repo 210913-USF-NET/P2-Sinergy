@@ -6,29 +6,19 @@
 <div class="usertable" >
 <Table class="table table-hover ">
 <thead style="color: rgb(130, 130, 194); background-color: #202020;">
+    <h1 style="color: cornsilk;">Users</h1>
+<Table class="table table-light">
+<thead>
     <th>UserID</th>
     <th>Email</th>
     <th>Account</th>
 </thead>
 <tbody background-color: #202020;>
-    <!-- <tr *ngFor="let user of users">
-        <td>{{user.UserID}}</td>
-        <td>{{user.Email}}</td>
-        <td>{{user.Account}}</td>
-    </tr> -->
+   <tr *ngFor = "let user of Users">
+       <td>{{user.UserID}}</td>
+       <td>{{user.Email}}</td>
+       <td>{{user.Account}}</td>
+   </tr>
 </tbody>
-
-
-
-
-
-
-
-
-
-
-
-
-
 </Table>
 </div>

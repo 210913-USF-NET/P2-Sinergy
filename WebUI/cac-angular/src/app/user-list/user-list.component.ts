@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CacApiService } from '../service/cac-api.service';
+import { User } from '../models/User';
+
 
 @Component({
   selector: 'app-user-list',
@@ -10,11 +12,13 @@ export class UserListComponent implements OnInit {
 
   constructor(private cacService: CacApiService) { }
 
-  users: [] = [];
+  Users: User[] = [];
+
   ngOnInit(): void {
     this.cacService.getAllUsers().then(result =>{
-      console.log(result);
-    })
+      console.log(result)
+      this.Users = result;
+    });
   }
 
 }
