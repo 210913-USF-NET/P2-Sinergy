@@ -1,10 +1,19 @@
-<app-nav-bar></app-nav-bar>
-<div></div>
-<div class="colorground">
-    <div style="position:absolute; left: 540px; top: 160px">
-        <!-- <a routerLink="/login"><button class="btn btn-success" > Login </button></a> -->
-        <router-outlet></router-outlet>
+
+<!DOCTYPE html>
+<html>
+    <style>
+        body {
+        background-color: #202020;
+        }
+        </style>
+    <app-nav-bar></app-nav-bar>
+    <div></div>
+    <div>
+        <div style="left: 20px; top: 30px">
+
+            <router-outlet></router-outlet>
+        </div>
     </div>
-</div>
+</html>
 
 
