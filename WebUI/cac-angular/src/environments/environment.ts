@@ -11,8 +11,8 @@ export const environment = {
     APIUrl: 'https://cacophony.azurewebsites.net/',
     //add Url once we get it from azure
     //spotify token identifiers
-    SpotifyClientId: '84b1d35168da48b695dee126e8e1e77e',
-    SpotifyClientSecret: '86b51ae776d2420885f2c5ba9ea63b07'
+    spotifyClientId: '84b1d35168da48b695dee126e8e1e77e',
+    spotifyClientSecret: '86b51ae776d2420885f2c5ba9ea63b07'
 };
 
 /*

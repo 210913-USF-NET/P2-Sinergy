@@ -29,7 +29,9 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src.assets.js/loginSpotify.js"
+            ]
           },
           "configurations": {
             "production": {
