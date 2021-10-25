@@ -1,8 +1,6 @@
+export function apiToken(){
 
 var request = require('request');
-
-var client_id = '4f62261bf9ec402d867aa525f1284ba8';
-var client_secret = '90d7056a358e47b184c225d9349d7b3d';
 
 // your application requests authorization
 var authOptions = {
@@ -36,3 +34,4 @@ request.post(authOptions, function(error, response, body) {
     });
   }
 });
+}
