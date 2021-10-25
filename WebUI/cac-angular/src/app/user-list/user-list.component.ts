@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CacApiService } from '../service/cac-api.service';
 import { User } from '../models/User';
+declare var getToken: any;
 
 
 @Component({
@@ -14,11 +15,22 @@ export class UserListComponent implements OnInit {
 
   Users: User[] = [];
 
+  onClick(){
+    
+      new getToken();
+
+    }
+
   ngOnInit(): void {
     this.cacService.getAllUsers().then(result =>{
       console.log(result)
       this.Users = result;
     });
+
+    
   }
+    
 
 }
+
+
