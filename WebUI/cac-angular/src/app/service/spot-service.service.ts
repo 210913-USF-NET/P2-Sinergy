@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 import { environment } from '../../environments/environment';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import { map, catchError } from 'rxjs/operators';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
@@ -13,8 +15,8 @@ export class SpotifyService {
   private artistUrl: string;
   private albumsUrl: string;
   private albumUrl: string;
-  private clientId: string = environment.clientId;
-  private clientSecret: string = environment.clientSecret;
+  private clientId: string = environment.spotifyClientId;
+  private clientSecret: string = environment.spotifyClientSecret;
   private body: any;
 
 
@@ -22,7 +24,7 @@ export class SpotifyService {
 
 
   // Get access token from Spotify to use API
-  getAuth = () => {
+ getAuth = () => {
 
     let headers = new Headers();
     headers.append('Authorization', 'Basic ' + btoa(this.clientId + ":" + this.clientSecret));
@@ -33,10 +35,8 @@ export class SpotifyService {
     let body = params.toString();
 
     return this._http.post('https://accounts.spotify.com/api/token', body, { headers: headers })
-      .map(res => res.json());
-
+    .pipe(map(res => res.json()));
   }
-
   // Get search results for a query
   searchMusic(query: string, type = 'artist', authToken: string) {
     let headers = new Headers();
