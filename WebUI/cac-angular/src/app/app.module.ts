@@ -26,10 +26,9 @@ import Chart from 'chart.js/auto'
     LoginComponent,
     UserListComponent,
     AuthComponent,
-    ChartsComponent,
     UserFormComponent,
-    SpotifyLoginComponent
-    MoreChartsComponent
+    SpotifyLoginComponent,
+    MoreChartsComponent,
   ],
   imports: [
     BrowserModule,
