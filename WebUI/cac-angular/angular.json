@@ -30,7 +30,7 @@
               "src/styles.css"
             ],
             "scripts": [
-              "src.assets.js/loginSpotify.js"
+              "src/assets/js/loginSpotify.js"
             ]
           },
           "configurations": {

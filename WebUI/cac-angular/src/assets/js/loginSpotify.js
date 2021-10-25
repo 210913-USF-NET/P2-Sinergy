@@ -2,19 +2,19 @@
   // Helper Function to Extract Access Token for URL
 function loginSpotify(){
   
- const getUrlParameter = (sParam) => {
-   let sPageURL = window.location.search.substring(1),////substring will take everything after the https link and split the #/&
-       sURLVariables = sPageURL != undefined && sPageURL.length > 0 ? sPageURL.split('#') : [],
-       sParameterName,
-       i;
-   let split_str = window.location.href.length > 0 ? window.location.href.split('#') : [];
-   sURLVariables = split_str != undefined && split_str.length > 1 && split_str[1].length > 0 ? split_str[1].split('&') : [];
-   for (i = 0; i < sURLVariables.length; i++) {
-       sParameterName = sURLVariables[i].split('=');
-       if (sParameterName[0] === sParam) {
-           return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
-       }
-   }
+  const getUrlParameter = (sParam) => {
+    let sPageURL = window.location.search.substring(1),////substring will take everything after the https link and split the #/&
+        sURLVariables = sPageURL != undefined && sPageURL.length > 0 ? sPageURL.split('#') : [],
+        sParameterName,
+        i;
+    let split_str = window.location.href.length > 0 ? window.location.href.split('#') : [];
+    sURLVariables = split_str != undefined && split_str.length > 1 && split_str[1].length > 0 ? split_str[1].split('&') : [];
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+        }
+    }
 };
 
  // Get Access Token
