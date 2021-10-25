@@ -13,6 +13,7 @@ export class CacApiService {
 
   getAllUsers(): Promise<User[]>
   {
+    
     return this.http.get<User[]>(this.rootUrl).toPromise();
   }
 

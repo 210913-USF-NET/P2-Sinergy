@@ -1,6 +1,6 @@
 export interface User {
-    UserID: number;
-    Email: string;
-    Account: string;
-    Admin: boolean;
+    userID: number;
+    email: string;
+    account: string;
+    admin: boolean;
 }
