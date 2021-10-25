@@ -10,11 +10,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserListComponent } from './user-list/user-list.component';
 import { environment } from 'src/environments/environment';
 import { AuthComponent } from './auth/auth.component';
-import { ChartsComponent } from './charts/charts.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { MoreChartsComponent } from './more-charts/more-charts.component';
-import { Chart } from 'chart.js';
-
+import Chart from 'chart.js/auto'
 
 
 
@@ -26,10 +24,8 @@ import { Chart } from 'chart.js';
     LoginComponent,
     UserListComponent,
     AuthComponent,
-    ChartsComponent,
     UserFormComponent,
     MoreChartsComponent
-
   ],
   imports: [
     BrowserModule,
