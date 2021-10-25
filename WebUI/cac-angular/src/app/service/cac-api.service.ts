@@ -21,4 +21,9 @@ export class CacApiService {
   {
     return this.http.post<User>(this.rootUrl, User).toPromise();
   }
+
+  getUserById(id: number): Promise<User>
+  {
+    return this.http.get<User>(this.rootUrl + "/" + id).toPromise();
+  }
 }

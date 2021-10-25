@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CacApiService } from '../service/cac-api.service';
 import { User } from '../models/User';
-declare var getToken: any;
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -11,25 +11,22 @@ declare var getToken: any;
 })
 export class UserListComponent implements OnInit {
 
-  constructor(private cacService: CacApiService) { }
+  constructor(private cacService: CacApiService, private router: Router) { }
 
   Users: User[] = [];
-
-  onClick(){
-    
-      new getToken();
-
-    }
 
   ngOnInit(): void {
     this.cacService.getAllUsers().then(result =>{
       console.log(result)
       this.Users = result;
     });
-
-    
+}
+    goToUser(UserId: number): void
+  {
+    //navigate by absolute path
+    this.router.navigateByUrl(`users/${UserId}`);
   }
-    
+
 
 }
 

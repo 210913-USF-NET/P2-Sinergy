@@ -12,9 +12,7 @@ import { environment } from 'src/environments/environment';
 import { AuthComponent } from './auth/auth.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { SpotifyLoginComponent } from './spotify-login/spotify-login.component';
-
 import { MoreChartsComponent } from './more-charts/more-charts.component';
-import Chart from 'chart.js/auto'
 
 
 

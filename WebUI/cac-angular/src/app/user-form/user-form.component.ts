@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CacApiService } from '../service/cac-api.service';
 import { User } from '../models/User';
-import { NgForm } from '@angular/forms';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-user-form',
@@ -10,9 +10,25 @@ import { NgForm } from '@angular/forms';
 })
 export class UserFormComponent implements OnInit {
 
-  constructor(private cacService: CacApiService) { }
+  constructor(private currentRoute: ActivatedRoute, private cacService: CacApiService) { }
+
+id = 0;
+User: User = {
+  userID: 0,
+  email: '',
+  account: '',
+  admin: false
+};  
+
 
   ngOnInit(): void {
-    //add submit+comfirmation button then on submit add to database
+    this.currentRoute.params.subscribe(params => {
+      this.id = params['id'];
+      this.cacService.getUserById(this.id).then(result => {
+        this.User = result;
+      });
+    });
   }
-}
+    
+  }
+
