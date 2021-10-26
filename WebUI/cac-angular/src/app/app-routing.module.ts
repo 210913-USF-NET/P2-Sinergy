@@ -9,7 +9,7 @@ import { MoreChartsComponent } from './more-charts/more-charts.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent },
-  {path: 'users/:mode/:id', component: UserFormComponent},
+  {path: 'users/:id', component: UserFormComponent},
   {path: 'users', component: UserListComponent},
   {path: 'playlist-maker', component: PlaylistMakerComponent},
   {path: 'more-charts', component: MoreChartsComponent}

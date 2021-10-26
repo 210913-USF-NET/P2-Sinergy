@@ -1,26 +1,27 @@
-<script src="../../assets/spotifyService/getToken.js"></script>
 <style>
     body {
     background-color: #202020;
     }
 </style>
-<div class="usertable" >
-<Table class="table table-hover ">
-<thead style="color: rgb(130, 130, 194); background-color: #202020;">
-    <h1 style="color: cornsilk;">Users</h1>
-<Table class="table table-light">
-<thead>
-    <th>UserID</th>
-    <th>Email</th>
-    <th>Account</th>
-</thead>
-<tbody background-color: #202020;>
-   <tr *ngFor = "let user of Users">
-        <td>{{user.userID}}</td>
-        <td>{{user.email}}</td>
-        <td>{{user.account}}</td>
-    </tr>
-</tbody>
-</Table>
+<div class="usertable">
+<h1 style="color: cornsilk;">Users</h1>
+<table class="table table-light">
+    <thead style="color: azure; background-color: #202020; display:table-header-group;"> 
+        <th>UserID</th>
+        <th>Email</th>
+        <th>Account</th>
+        <th colspan="1"></th>
+    </thead>
+    <tbody style ="background-color: #202020;">
+        <tr *ngFor="let user of Users" (click)="goToUser(user.userID)">
+            <td>{{user.userID}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.account}}</td>
+            <td><button>wowow</button></td>
+        </tr>
+    </tbody>
+</table>
+</div>
 
-<!-- </div>  My compiler was having issues because this is an implied closing tag, and it didn't like when it was declared -- Justin-->
+
+

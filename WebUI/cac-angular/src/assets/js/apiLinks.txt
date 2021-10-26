@@ -1,0 +1,48 @@
+const AUTHORIZE = "https://accounts.spotify.com/authorize"
+const TOKEN = "https://accounts.spotify.com/api/token";
+const PLAYLISTS = "https://api.spotify.com/v1/me/playlists";
+const TRACKS = "https://api.spotify.com/v1/playlists/{{PlaylistId}}/tracks";
+
+
+function fetchAccessToken( code ){
+    let body = "grant_type=authorization_code";
+    body += "&code=" + code; 
+    body += "&redirect_uri=" + encodeURI(redirect_uri);
+    body += "&client_id=" + client_id;
+    body += "&client_secret=" + client_secret;
+    callAuthorizationApi(body);
+}
+
+function refreshAccessToken(){
+    refresh_token = localStorage.getItem("refresh_token");
+    let body = "grant_type=refresh_token";
+    body += "&refresh_token=" + refresh_token;
+    body += "&client_id=" + client_id;
+    callAuthorizationApi(body);
+}
+
+function callApi(method, url, body, callback){
+    let xhr = new XMLHttpRequest();
+    xhr.open(method, url, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.setRequestHeader('Authorization', 'Bearer ' + 'BQC6ZqfPycBqqh4tWbBZNFzLTYVKzLDSWrjjisyx3MvBmkkLdYYGSMpvRCZ9Eo63kxKArMO-d1PPA1BiR_6Vhva1ayyB7q_8vJzYBMwue7xJDBQJFgmLJtNkThC7fk1lNq0iTRDg11sxgr7NTtqXzrnS7-8q0cnW7F6_fxLmR761nuu9E5TH5sAdkFdWCe6OPo9Zf9bVHX0i5THZ8GlB4C9G7NVcApuBVfOP4gJ0iN3mZDFZkb0&token_type=Bearer&expires_in=3600');
+    xhr.send(body);
+    xhr.onload = callback;
+}
+
+
+function refreshPlaylists(){
+    callApi( "GET", PLAYLISTS, null, handlePlaylistsResponse );
+}
+
+function handlePlaylistsResponse(){
+    if ( this.status == 200 ){
+        var data = JSON.parse(this.responseText);
+        console.log(data);
+        
+    }
+    else {
+        console.log(this.responseText);
+        alert(this.responseText);
+    }
+}

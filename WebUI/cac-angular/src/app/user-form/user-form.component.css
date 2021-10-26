@@ -1,0 +1,22 @@
+.headertext{
+    color: #ff00ff;
+}
+
+.listContainer{
+    width: 500px;
+    border-bottom: honeydew;
+    float: left;
+    margin-right: 50px;
+    border: 2px solid pink;
+}
+
+.minorHeader{
+    color:rgb(231, 147, 231)
+}
+
+.songList{
+    border: 2px solid pink;
+    width: 450px;
+    float: left;
+    margin-left: 50px;
+}

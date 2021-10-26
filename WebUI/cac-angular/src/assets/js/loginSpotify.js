@@ -1,4 +1,4 @@
-
+const PLAYLISTS = "https://api.spotify.com/v1/me";
   // Helper Function to Extract Access Token for URL
 function loginSpotify(){
   
@@ -34,3 +34,29 @@ console.log("got the token")
       window.location.replace(redirect);
     }
   }
+
+
+  function callApi(method, url, body, callback){
+    let xhr = new XMLHttpRequest();
+    xhr.open(method, url, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.setRequestHeader('Authorization', 'Bearer ' + 'BQC6ZqfPycBqqh4tWbBZNFzLTYVKzLDSWrjjisyx3MvBmkkLdYYGSMpvRCZ9Eo63kxKArMO-d1PPA1BiR_6Vhva1ayyB7q_8vJzYBMwue7xJDBQJFgmLJtNkThC7fk1lNq0iTRDg11sxgr7NTtqXzrnS7-8q0cnW7F6_fxLmR761nuu9E5TH5sAdkFdWCe6OPo9Zf9bVHX0i5THZ8GlB4C9G7NVcApuBVfOP4gJ0iN3mZDFZkb0&token_type=Bearer&expires_in=3600');
+    xhr.send(body);
+    xhr.onload = callback;
+}
+
+function refreshPlaylists(){
+    callApi( "GET", PLAYLISTS, null, handlePlaylistsResponse );
+}
+
+function handlePlaylistsResponse(){
+    if ( this.status == 200 ){
+        var data = JSON.parse(this.responseText);
+        console.log(data);
+        
+    }
+    else {
+        console.log(this.responseText);
+        alert(this.responseText);
+    }
+}
