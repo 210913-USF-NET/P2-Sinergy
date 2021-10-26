@@ -1,4 +1,5 @@
 const PLAYLISTS = "https://api.spotify.com/v1/me";
+
   // Helper Function to Extract Access Token for URL
 
 function loginSpotify(accessToken){
@@ -41,6 +42,7 @@ console.log("got the token")
 
 
   function callApi(method, url, body, callback){
+    
     let xhr = new XMLHttpRequest();
     xhr.open(method, url, true);
     xhr.setRequestHeader('Content-Type', 'application/json');
@@ -49,6 +51,7 @@ console.log("got the token")
     xhr.onload = callback;
 }
 
+
 function refreshPlaylists(){
     callApi( "GET", PLAYLISTS, null, handlePlaylistsResponse );
 }
@@ -56,6 +59,17 @@ function refreshPlaylists(){
 function handlePlaylistsResponse(){
     if ( this.status == 200 ){
         var data = JSON.parse(this.responseText);
+        let username = document.querySelector('.user');
+        let captEl = document.createElement('caption');
+        let screenName = document.createTextNode(data.display_name);
+        captEl.appendChild(screenName);
+        username.appendChild(captEl);
+
+
+
+
+
+
         console.log(data);
         
     }
