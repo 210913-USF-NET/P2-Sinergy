@@ -4,17 +4,17 @@
 <br>
 <table class="table">
     <thead> 
-        <th>UserID</th>
+        <th width="100">UserID</th>
         <th>Email</th>
         <th>Spotify Username</th>
-        <th>View</th>
+        <th width="150">View</th>
     </thead>
-    <tbody>
-        <tr *ngFor="let user of Users">
+    <tbody class="bottom">
+        <tr *ngFor="let user of Users" >
             <td>{{user.userID}}</td>
             <td>{{user.email}}</td>
             <td>{{user.account}}</td>
-            <td (click)="goToUser(user.userID)"><button class="tbutton">wowow</button></td>
+            <td (click)="goToUser(user.userID)"><button class="tbutton">View Playlist</button></td>
         </tr>
     </tbody>
 </table>
