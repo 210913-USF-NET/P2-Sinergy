@@ -1,7 +1,8 @@
 const PLAYLISTS = "https://api.spotify.com/v1/me";
+
   // Helper Function to Extract Access Token for URL
-function loginSpotify(){
-  
+
+function loginSpotify(accessToken){
   const getUrlParameter = (sParam) => {
     let sPageURL = window.location.search.substring(1),////substring will take everything after the https link and split the #/&
         sURLVariables = sPageURL != undefined && sPageURL.length > 0 ? sPageURL.split('#') : [],
@@ -18,8 +19,11 @@ function loginSpotify(){
 };
 
  // Get Access Token
-const accessToken = getUrlParameter('access_token');
+  accessToken = getUrlParameter('access_token');
 console.log(accessToken);
+sessionStorage.accessToken = accessToken;
+console.log("session set to "+ sessionStorage.accessToken);
+
     // AUTHORIZE with Spotify (if needed)
     // *************** REPLACE THESE VALUES! *************************
     let client_id = '4f62261bf9ec402d867aa525f1284ba8';
@@ -31,19 +35,22 @@ console.log("got the token")
     &response_type=token&redirect_uri=${redirect_uri}`;
     // Don't authorize if we have an access token already
     if(accessToken == null || accessToken == "" || accessToken == undefined){
-      window.location.replace(redirect);
+        window.location.replace(redirect);
     }
+    
   }
 
 
   function callApi(method, url, body, callback){
+    
     let xhr = new XMLHttpRequest();
     xhr.open(method, url, true);
     xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.setRequestHeader('Authorization', 'Bearer ' + 'BQC6ZqfPycBqqh4tWbBZNFzLTYVKzLDSWrjjisyx3MvBmkkLdYYGSMpvRCZ9Eo63kxKArMO-d1PPA1BiR_6Vhva1ayyB7q_8vJzYBMwue7xJDBQJFgmLJtNkThC7fk1lNq0iTRDg11sxgr7NTtqXzrnS7-8q0cnW7F6_fxLmR761nuu9E5TH5sAdkFdWCe6OPo9Zf9bVHX0i5THZ8GlB4C9G7NVcApuBVfOP4gJ0iN3mZDFZkb0&token_type=Bearer&expires_in=3600');
+    xhr.setRequestHeader('Authorization', 'Bearer ' + accessToken );
     xhr.send(body);
     xhr.onload = callback;
 }
+
 
 function refreshPlaylists(){
     callApi( "GET", PLAYLISTS, null, handlePlaylistsResponse );
@@ -52,6 +59,17 @@ function refreshPlaylists(){
 function handlePlaylistsResponse(){
     if ( this.status == 200 ){
         var data = JSON.parse(this.responseText);
+        let username = document.querySelector('.user');
+        let captEl = document.createElement('caption');
+        let screenName = document.createTextNode(data.display_name);
+        captEl.appendChild(screenName);
+        username.appendChild(captEl);
+
+
+
+
+
+
         console.log(data);
         
     }
