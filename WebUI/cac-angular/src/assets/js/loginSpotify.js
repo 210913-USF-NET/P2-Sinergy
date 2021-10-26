@@ -1,4 +1,5 @@
 const PLAYLISTS = "https://api.spotify.com/v1/me";
+
   // Helper Function to Extract Access Token for URL
 function loginSpotify(){
   
@@ -33,17 +34,20 @@ console.log("got the token")
     if(accessToken == null || accessToken == "" || accessToken == undefined){
       window.location.replace(redirect);
     }
+    
   }
 
 
   function callApi(method, url, body, callback){
+    
     let xhr = new XMLHttpRequest();
     xhr.open(method, url, true);
     xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.setRequestHeader('Authorization', 'Bearer ' + 'BQC6ZqfPycBqqh4tWbBZNFzLTYVKzLDSWrjjisyx3MvBmkkLdYYGSMpvRCZ9Eo63kxKArMO-d1PPA1BiR_6Vhva1ayyB7q_8vJzYBMwue7xJDBQJFgmLJtNkThC7fk1lNq0iTRDg11sxgr7NTtqXzrnS7-8q0cnW7F6_fxLmR761nuu9E5TH5sAdkFdWCe6OPo9Zf9bVHX0i5THZ8GlB4C9G7NVcApuBVfOP4gJ0iN3mZDFZkb0&token_type=Bearer&expires_in=3600');
+    xhr.setRequestHeader('Authorization', 'Bearer ' + 'BQDI8nFUnLB7ZycdArvj7KkRrMuKhdL1AnOdkTIA6t1UtdGJFSZkX6dlNCBX9bFwV1RrOp4zyZPbSZTrKxumQuX6Hk5_ZrHq8uB2V7qSvCtZUCTxKropuv2lbya9I1KLfdaX6rt5NFvltolNKktGb2ztbeV3x-num6VuX6I6foaKcSsBc_fQKHJ1Qc9XiwL04sPKNY7tJBVjod-HMtt-uhakM1mk01Ydx3EEJXuxIad7yV8gPbo');
     xhr.send(body);
     xhr.onload = callback;
 }
+
 
 function refreshPlaylists(){
     callApi( "GET", PLAYLISTS, null, handlePlaylistsResponse );
@@ -52,6 +56,17 @@ function refreshPlaylists(){
 function handlePlaylistsResponse(){
     if ( this.status == 200 ){
         var data = JSON.parse(this.responseText);
+        let username = document.querySelector('.user');
+        let captEl = document.createElement('caption');
+        let screenName = document.createTextNode(data.display_name);
+        captEl.appendChild(screenName);
+        username.appendChild(captEl);
+
+
+
+
+
+
         console.log(data);
         
     }
