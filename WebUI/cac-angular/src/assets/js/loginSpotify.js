@@ -18,8 +18,8 @@ function loginSpotify(){
 };
 
  // Get Access Token
- const accessToken = getUrlParameter('access_token');
-
+const accessToken = getUrlParameter('access_token');
+console.log(accessToken);
     // AUTHORIZE with Spotify (if needed)
     // *************** REPLACE THESE VALUES! *************************
     let client_id = '4f62261bf9ec402d867aa525f1284ba8';
