@@ -1,8 +1,8 @@
 const PLAYLISTS = "https://api.spotify.com/v1/me";
 
   // Helper Function to Extract Access Token for URL
-function loginSpotify(){
-  
+
+function loginSpotify(accessToken){
   const getUrlParameter = (sParam) => {
     let sPageURL = window.location.search.substring(1),////substring will take everything after the https link and split the #/&
         sURLVariables = sPageURL != undefined && sPageURL.length > 0 ? sPageURL.split('#') : [],
@@ -19,8 +19,11 @@ function loginSpotify(){
 };
 
  // Get Access Token
-const accessToken = getUrlParameter('access_token');
+  accessToken = getUrlParameter('access_token');
 console.log(accessToken);
+sessionStorage.accessToken = accessToken;
+console.log("session set to "+ sessionStorage.accessToken);
+
     // AUTHORIZE with Spotify (if needed)
     // *************** REPLACE THESE VALUES! *************************
     let client_id = '4f62261bf9ec402d867aa525f1284ba8';
@@ -32,7 +35,7 @@ console.log("got the token")
     &response_type=token&redirect_uri=${redirect_uri}`;
     // Don't authorize if we have an access token already
     if(accessToken == null || accessToken == "" || accessToken == undefined){
-      window.location.replace(redirect);
+        window.location.replace(redirect);
     }
     
   }
@@ -43,7 +46,7 @@ console.log("got the token")
     let xhr = new XMLHttpRequest();
     xhr.open(method, url, true);
     xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.setRequestHeader('Authorization', 'Bearer ' + 'BQDI8nFUnLB7ZycdArvj7KkRrMuKhdL1AnOdkTIA6t1UtdGJFSZkX6dlNCBX9bFwV1RrOp4zyZPbSZTrKxumQuX6Hk5_ZrHq8uB2V7qSvCtZUCTxKropuv2lbya9I1KLfdaX6rt5NFvltolNKktGb2ztbeV3x-num6VuX6I6foaKcSsBc_fQKHJ1Qc9XiwL04sPKNY7tJBVjod-HMtt-uhakM1mk01Ydx3EEJXuxIad7yV8gPbo');
+    xhr.setRequestHeader('Authorization', 'Bearer ' + accessToken );
     xhr.send(body);
     xhr.onload = callback;
 }
