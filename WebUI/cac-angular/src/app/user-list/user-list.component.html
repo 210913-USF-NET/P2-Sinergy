@@ -1,23 +1,20 @@
-<style>
-    body {
-    background-color: #202020;
-    }
-</style>
-<div class="usertable">
-<h1 style="color: cornsilk;">Users</h1>
-<table class="table table-light">
-    <thead style="color: azure; background-color: #202020; display:table-header-group;"> 
+<div>
+<br>
+<h1 style="color: rgb(255, 255, 255); text-align:center">Users</h1>
+<br>
+<table class="table">
+    <thead> 
         <th>UserID</th>
         <th>Email</th>
-        <th>Account</th>
-        <th colspan="1"></th>
+        <th>Spotify Username</th>
+        <th>View</th>
     </thead>
-    <tbody style ="background-color: #202020;">
-        <tr *ngFor="let user of Users" (click)="goToUser(user.userID)">
+    <tbody>
+        <tr *ngFor="let user of Users">
             <td>{{user.userID}}</td>
             <td>{{user.email}}</td>
             <td>{{user.account}}</td>
-            <td><button>wowow</button></td>
+            <td (click)="goToUser(user.userID)"><button class="tbutton">wowow</button></td>
         </tr>
     </tbody>
 </table>
