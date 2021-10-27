@@ -23,12 +23,19 @@ function handleAuthorizationResponse(){
 }
 
 function fetchAccessToken(){
-    let client_id = '4f62261bf9ec402d867aa525f1284ba8';
-    let client_secret = '90d7056a358e47b184c225d9349d7b3d';// we need to remove this later, and replace with something like environment to hide the secret, but just putting here for now
-    let body = "grant_type=authorization_code";
-    body += "&code=" + sessionStorage.authCode; 
-    body += "&redirect_uri=" + encodeURI("http://localhost:4200/login");
-    callAuthorizationApi(body);
+    if(sessionStorage.authCode == null || sessionStorage.authCode == "" || sessionStorage.authCode == undefined || sessionStorage.authCode == 'undefined'){
+        loginSpotify();
+    }
+    else if(sessionStorage.refresh_token == null || sessionStorage.refresh_token == "" || sessionStorage.refresh_token == undefined || sessionStorage.refresh_token == 'undefined'){
+
+        let body = "grant_type=authorization_code";
+        body += "&code=" + sessionStorage.authCode; 
+        body += "&redirect_uri=" + encodeURI("http://localhost:4200/login");
+        callAuthorizationApi(body);
+    }
+    else{
+        console.log('Already have an access token, to refresh, please login again');
+    }
 }
 
 function callAuthorizationApi(body){
@@ -43,13 +50,12 @@ function callAuthorizationApi(body){
 }
 
 function handleAuthorizationResponse(){
-    console.log("did this get skipped?");
     if ( this.status == 200 ){
         var data = JSON.parse(this.responseText);
-        console.log("Here is the data:" +data);
+        console.log("Here is the data: " +this.responseText);
         if ( data.access_token != undefined ){
-            sessionStorage.access_token = data.access_token;
-            console.log("access token is now "+sessionStorage.access_token)
+            sessionStorage.authCode = data.access_token;
+            console.log("authCoden is now "+sessionStorage.authCode)
         }
         if ( data.refresh_token  != undefined ){
             sessionStorage.refresh_token = data.refresh_token;
@@ -99,28 +105,9 @@ function loginSpotify(){
 }
 
 
-function handleAuthorizationResponse(){
-    if ( this.status == 200 ){
-        var data = JSON.parse(this.responseText);
-        console.log(data);
-        var data = JSON.parse(this.responseText);
-        if ( data.access_token != undefined ){
-            access_token = data.access_token;
-            sessionStorage.authCode=access_token;
-        }
-        if ( data.refresh_token  != undefined ){
-            refresh_token = data.refresh_token;
-            localStorage.setItem("refresh_token", refresh_token);
-        }
-    }
-    else {
-        console.log(this.responseText);
-        alert(this.responseText);
-    }
-}
-
 function clearAuthCode(){
     sessionStorage.removeItem('authCode');
+    sessionStorage.removeItem('refresh_token');
 }
 
 
