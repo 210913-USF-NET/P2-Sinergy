@@ -1,35 +1,20 @@
 
 <script src="assets/js/spotifyQueries.js"></script>
-<div><button onclick="getUserDetails()">hey</button></div>
+<div><button class="button" onclick="getUserDetails()">help</button></div>
 
-<div><h1 class="user"></h1></div>
-<div><h1 class="email"></h1></div>
 <div class="listContainer">
     <table>
         <thead class="minorHeader">
             <th>Playlist Name</th>
             <th>ID</th>
+            <th>No. of Songs</th>
         </thead>
         <tbody>
-            <tr *ngFor="let list of playlists">
+            <tr *ngFor="let list of playlists" id="visual">
                 <td>{{list.name}}</td>
                 <td>{{list.id}}</td>
+                <td>{{list.total}}</td>
             </tr>
         </tbody>
     </table>
-</div>
-<div class="songList">
-        <table class="table table-danger">
-            <thead class="minorHeader">
-                <th>Song Name</th>
-                <th>Details</th>
-            </thead>
-            <tbody>
-                <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                </tr>
-            </tbody>
-        </table>
 </div>

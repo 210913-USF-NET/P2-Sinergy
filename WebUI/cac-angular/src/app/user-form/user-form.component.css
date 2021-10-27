@@ -3,6 +3,10 @@
     color: #ff00ff;
 }
 
+#visual{
+    color: blueviolet;
+}
+
 .listContainer{
     width: 500px;
     border-bottom: honeydew;
