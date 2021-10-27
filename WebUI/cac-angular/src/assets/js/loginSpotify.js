@@ -1,4 +1,6 @@
-const PLAYLISTS = "https://api.spotify.com/v1/me";
+const PROFILE = "https://api.spotify.com/v1/me";
+const PLAYLIST = "https://api.spotify.com/v1/me/playlists";
+const TRACKS = "https://api.spotify.com/v1/playlists/{{PlaylistId}}/tracks";
 
   // Helper Function to Extract Access Token for URL
 
@@ -46,29 +48,39 @@ console.log("got the token")
     let xhr = new XMLHttpRequest();
     xhr.open(method, url, true);
     xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.setRequestHeader('Authorization', 'Bearer ' + accessToken );
+    xhr.setRequestHeader('Authorization', 'Bearer ' + sessionStorage.accessToken );
     xhr.send(body);
     xhr.onload = callback;
 }
 
 
-function refreshPlaylists(){
-    callApi( "GET", PLAYLISTS, null, handlePlaylistsResponse );
+function getUserDetails(){
+    callApi( "GET", PROFILE, null, handlePlaylistsResponse );
 }
+
+
 
 function handlePlaylistsResponse(){
     if ( this.status == 200 ){
-        var data = JSON.parse(this.responseText);
+       
+
+        for(var prop in data)
+        {
+            var item = data[prop]
+             var data = JSON.parse(this.responseText);
         let username = document.querySelector('.user');
         let captEl = document.createElement('caption');
-        let screenName = document.createTextNode(data.display_name);
+        let screenName = document.createTextNode(item.display_name);
         captEl.appendChild(screenName);
         username.appendChild(captEl);
 
-
-
-
-
+        var data = JSON.parse(this.responseText);
+        let email = document.querySelector('.email');
+        let captEmail = document.createElement('caption');
+        let mail = document.createTextNode(item.email);
+        captEmail.appendChild(mail);
+        email.appendChild(captEmail);
+        }
 
         console.log(data);
         
@@ -78,3 +90,4 @@ function handlePlaylistsResponse(){
         alert(this.responseText);
     }
 }
+
