@@ -1,6 +1,12 @@
 
 const AUTHORIZE = "https://accounts.spotify.com/authorize";
 const TOKEN = "https://accounts.spotify.com/api/token";
+const PLAYLISTS = "https://api.spotify.com/v1/me/playlists";
+const DEVICES = "https://api.spotify.com/v1/me/player/devices";
+const PLAY = "https://api.spotify.com/v1/me/player/play";
+const PAUSE = "https://api.spotify.com/v1/me/player/pause";
+const NEXT = "https://api.spotify.com/v1/me/player/next";
+const TRACKS = "https://api.spotify.com/v1/playlists/{{PlaylistId}}/tracks";
 
   // Helper Function to Extract Access Token for URL
 
@@ -123,6 +129,31 @@ function handleResponse(){
         var data = JSON.parse(this.responseText);
         console.log(data);
         
+    }
+    else {
+        console.log(this.responseText);
+        alert(this.responseText);
+    }
+}
+
+function fetchTracks(){
+    fetchAccessToken();
+    //let playlist_id = document.getElementById("playlists").value;
+    //if ( playlist_id.length > 0 ){
+        url = TRACKS.replace("{{PlaylistId}}", "37i9dQZF1DZ06evO1F4G5T");
+        callApi( "GET", url, null, handleTracksResponse );
+    //}
+}
+
+function handleTracksResponse(){
+    if ( this.status == 200 ){
+        var data = JSON.parse(this.responseText);
+        console.log(data);
+        removeAllItems( "tracks" );
+        data.items.forEach( (item, index) => addTrack(item, index));
+    }
+    else if ( this.status == 401 ){
+        refreshAccessToken()
     }
     else {
         console.log(this.responseText);
