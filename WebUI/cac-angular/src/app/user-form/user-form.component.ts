@@ -30,10 +30,10 @@ export class UserFormComponent implements OnInit {
         this.User = result;
       });
     });
-    
+
       this.cacService.getUserPlaylists().then(result =>{
         console.log(result)
-        this.playlists = result;
+        this.playlists = result.items;
   });
   
 }

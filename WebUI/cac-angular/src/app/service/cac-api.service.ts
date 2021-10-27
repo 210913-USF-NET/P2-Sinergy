@@ -31,7 +31,7 @@ export class CacApiService {
     return this.http.get<User>(this.rootUrl + "/" + id).toPromise();
   }
 
-  getUserPlaylists(): Promise<playlist[]>
+  getUserPlaylists(): Promise<any>
   {
     const headerDict = {
       'Content-Type': 'application/json',
@@ -42,7 +42,7 @@ export class CacApiService {
     const requestOptions = {                                                                                                                                                                                 
       headers: new HttpHeaders(headerDict), 
     };
-    return this.http.get<playlist[]>(PLAYLIST, requestOptions).toPromise();
+    return this.http.get<any>(PLAYLIST, requestOptions).toPromise();
   }
   
   // public getUserPlaylists(): void {
