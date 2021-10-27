@@ -79,7 +79,7 @@ function loginSpotify(){
     let client_id = '4f62261bf9ec402d867aa525f1284ba8';
     let redirect_uri = 'http%3A%2F%2Flocalhost%3A4200%2Flogin'; // should encode the URL
     // *************** END *************************
-    const redirect = `https://accounts.spotify.com/authorize?client_id=${client_id}&scope=playlist-modify-private%20playlist-read-private%20playlist-modify-public%20playlist-read-collaborative%20user-read-playback-position%20user-read-recently-played%20user-top-read%20user-follow-modify%20user-follow-read%20
+    const redirect = `https://accounts.spotify.com/authorize?client_id=${client_id}&scope=user-read-email%20user-read-private%20playlist-modify-private%20playlist-read-private%20playlist-modify-public%20playlist-read-collaborative%20user-read-playback-position%20user-read-recently-played%20user-top-read%20user-follow-modify%20user-follow-read%20
     &response_type=code&redirect_uri=${redirect_uri}`;
     // Don't authorize if we have an access token already
     if(sessionStorage.authCode == null || sessionStorage.authCode == "" || sessionStorage.authCode == undefined || sessionStorage.authCode == 'undefined'){
@@ -102,7 +102,6 @@ function refreshChecker(){
 
 
 ///queries
-
 
 
 
