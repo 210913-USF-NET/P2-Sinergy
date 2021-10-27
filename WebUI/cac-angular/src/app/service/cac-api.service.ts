@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { User } from '../models/User';
 import { playlist } from '../models/spotifyPlaylist';
 import { map, take } from 'rxjs/operators';
+import { pipe } from 'rxjs';
 const PLAYLIST = "https://api.spotify.com/v1/me/playlists";
 
 @Injectable({
@@ -35,7 +36,7 @@ export class CacApiService {
     const headerDict = {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
-      'Authorization': 'Bearer ' + sessionStorage.accessToken,
+      'Authorization': 'Bearer ' + sessionStorage.authCode,
     }
     
     const requestOptions = {                                                                                                                                                                                 
