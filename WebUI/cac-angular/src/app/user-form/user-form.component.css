@@ -1,23 +1,51 @@
-.user{
-    
-    color: #ff00ff;
-}
-
-.listContainer{
-    width: 500px;
-    border-bottom: honeydew;
+.playlist-table{
+    color: white;
+    border-bottom: 5px solid rgb(255, 255, 255);
     float: left;
-    margin-right: 50px;
+    margin-left: 1%;
     border: 2px solid pink;
+    box-shadow: 5px 5px 5px black;
 }
 
-.minorHeader{
-    color:rgb(231, 147, 231)
+.playlist-table thead{
+    background-color: rgb(193, 33, 199);
+    color:black;
+    text-align: center;
+    border-top: 3px solid rgb(255, 255, 255)!important;
+    border-bottom: 3px solid rgb(255, 255, 255)!important;
+    border-left: 3px solid rgb(255, 255, 255);
+    border-right: 3px solid rgb(255, 255, 255);
 }
 
-.songList{
-    border: 2px solid pink;
-    width: 450px;
+.playlist-table td {
+    text-align: center;
+    border-left: 3px solid rgb(255, 255, 255);
+    border-right: 3px solid rgb(255, 255, 255);
+    border-top: none!important;
+}
+
+.song-table {
+    color: white;
+    border-bottom: 5px solid rgb(255, 255, 255);
     float: left;
-    margin-left: 50px;
+    margin-left: 1%;
+    border: 2px solid pink;
+    box-shadow: 5px 5px 5px black;
+}
+
+.song-table thead{
+    background-color: rgb(193, 33, 199);
+    color:black;
+    text-align: center;
+    border-top: 3px solid rgb(255, 255, 255)!important;
+    border-bottom: 3px solid rgb(255, 255, 255)!important;
+    border-left: 3px solid rgb(255, 255, 255);
+    border-right: 3px solid rgb(255, 255, 255);
+}
+
+.song-table td {
+    text-align: center;
+    border-left: 3px solid rgb(255, 255, 255);
+    border-right: 3px solid rgb(255, 255, 255);
+    border-top: none!important;
 }
