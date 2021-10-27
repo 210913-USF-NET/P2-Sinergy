@@ -8,12 +8,14 @@
             <tr *ngFor="let list of playlists" id="visual">
                 <td>{{list.name}}</td>
                 <td>{{list.id}}</td>
-                <td>{{list.total}}</td>
             </tr>
         </tbody>
     </table>
 </div>
-<div><button onclick="getUserDetails()">yes</button></div>
-<div class="email">
-    <h1></h1>
-</div>
+<body onload="getUserDetails()">
+    <div class="id">
+        <h1></h1>
+    </div>
+</body>
+
+
