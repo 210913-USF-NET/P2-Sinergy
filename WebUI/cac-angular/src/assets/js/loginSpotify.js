@@ -34,29 +34,6 @@ function callAuthorizationApi(body){
 
 function handleAuthorizationResponse(){
     if ( this.status == 200 ){
-<<<<<<< HEAD
-       
-
-        
-        
-        var data = JSON.parse(this.responseText);
-        // let username = document.querySelector('.user');
-        // let captEl = document.createElement('caption');
-        // let screenName = document.createTextNode(data.display_name);
-        // captEl.appendChild(screenName);
-        // username.appendChild(captEl);
-
-        // var data = JSON.parse(this.responseText);
-        // let email = document.querySelector('.email');
-        // let captEmail = document.createElement('caption');
-        // let mail = document.createTextNode(data.email);
-        // captEmail.appendChild(mail);
-        // email.appendChild(captEmail);
-        
-
-        console.log(data);
-        
-=======
         var data = JSON.parse(this.responseText);
         console.log("Here is the data: " +this.responseText);
         if ( data.access_token != undefined ){
@@ -67,7 +44,6 @@ function handleAuthorizationResponse(){
             sessionStorage.refresh_token = data.refresh_token;
             console.log("refresh token is now "+sessionStorage.refresh_token)
         }
->>>>>>> 3bb6da4b609e710d2aa553dd5935ff024509bd6e
     }
     else {
         console.log(this.responseText);
