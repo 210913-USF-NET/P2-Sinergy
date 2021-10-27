@@ -38,7 +38,7 @@ function handleAuthorizationResponse(){
         console.log("Here is the data: " +this.responseText);
         if ( data.access_token != undefined ){
             sessionStorage.authCode = data.access_token;
-            console.log("authCoden is now "+sessionStorage.authCode)
+            console.log("authCode is now "+sessionStorage.authCode)
         }
         if ( data.refresh_token  != undefined ){
             sessionStorage.refresh_token = data.refresh_token;

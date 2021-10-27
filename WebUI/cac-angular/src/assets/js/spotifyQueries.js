@@ -1,21 +1,23 @@
 
-const PLAYLISTS = "https://api.spotify.com/v1/me";
+const PROFILE = "https://api.spotify.com/v1/me";
+const AUTHORIZE = "https://accounts.spotify.com/authorize";
+const TOKEN = "https://accounts.spotify.com/api/token";
 
 
 function callApi(method, url, body, callback){
     let xhr = new XMLHttpRequest();
     xhr.open(method, url, true);
     xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.setRequestHeader('Authorization', 'Bearer ' + accessToken );
+    xhr.setRequestHeader('Authorization', 'Bearer ' + sessionStorage.authCode);
     xhr.send(body);
     xhr.onload = callback;
 }
 
-function refreshPlaylists(){
-    callApi( "GET", PLAYLISTS, null, handlePlaylistsResponse );
+function getUserDetails(){
+    callApi( "GET", PROFILE, null, handleResponse );
 }
 
-function handlePlaylistsResponse(){
+function handleResponse(){
     if ( this.status == 200 ){
         var data = JSON.parse(this.responseText);
         console.log(data);
