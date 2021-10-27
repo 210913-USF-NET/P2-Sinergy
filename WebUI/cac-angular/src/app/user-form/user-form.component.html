@@ -1,21 +1,47 @@
+
+<script src="assets/js/spotifyQueries.js"></script>
+<br>
+<div class="playlist-table">
 <div class="listContainer">
+
     <table>
-        <thead class="minorHeader">
-            <th>Playlist Name</th>
-            <th>ID</th>
+        <thead>
+            <th width="300px">ID</th>
+            <th width="450px">Playlist Name</th>
         </thead>
         <tbody>
+
+            <tr *ngFor="let list of playlists">
+                <td width="50px">{{list.name}}</td>
             <tr *ngFor="let list of playlists" id="visual">
                 <td>{{list.name}}</td>
                 <td>{{list.id}}</td>
             </tr>
+            <tr>
+                <td>hi im an id</td>
+                <td>a playlist is basically a lasagna of songs</td>
+            </tr>
         </tbody>
     </table>
 </div>
-<body onload="getUserDetails()">
-    <div class="id">
-        <h1></h1>
-    </div>
-</body>
 
+<div class="song-table">
+        <table>
+            <thead>
+                <th width="300px">Song Name</th>
+                <th width="800px">Details</th>
+            </thead>
+            <tbody>
+                <tr>
+                <td>lalala a very long song name lalala</td>
+                <td>song stuff the beeps and the boops</td>
+                </tr>
+            </tbody>
+        </table>
+</div>
+=======
+<div><button onclick="getUserDetails()">yes</button></div>
+<div class="email">
+    <h1></h1>
+</div>
 

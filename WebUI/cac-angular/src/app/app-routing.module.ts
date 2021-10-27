@@ -6,13 +6,16 @@ import { UserListComponent } from './user-list/user-list.component';
 import { PlaylistMakerComponent } from './playlist-maker/playlist-maker.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { MoreChartsComponent } from './more-charts/more-charts.component';
+import { HomepageComponent } from './homepage/homepage.component';
 
 const routes: Routes = [
+  {path: 'home', component: HomepageComponent },
   {path: 'login', component: LoginComponent },
   {path: 'users/:id', component: UserFormComponent},
   {path: 'users', component: UserListComponent},
   {path: 'playlist-maker', component: PlaylistMakerComponent},
-  {path: 'more-charts', component: MoreChartsComponent}
+  {path: 'more-charts', component: MoreChartsComponent},
+  {path: '', redirectTo: '/home', pathMatch: 'full'}
 ];
 
 @NgModule({
