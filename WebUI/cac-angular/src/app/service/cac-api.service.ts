@@ -44,6 +44,23 @@ export class CacApiService {
     return this.http.get<any>(PLAYLIST, requestOptions).toPromise();
   }
 
+  
+  getSinglePlaylist(playlist_id): Promise<any>
+  {
+    let url ='https://api.spotify.com/v1/playlists'+playlist_id+'/tracks';
+    const headerDict = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer ' + sessionStorage.authCode,
+    }
+    
+    const requestOptions = {                                                                                                                                                                                 
+      headers: new HttpHeaders(headerDict), 
+    };
+    return this.http.get<any>(url, requestOptions).toPromise();
+  }
+
+
   getUserDetails(): Promise<any>
   {
     const headerDict = {

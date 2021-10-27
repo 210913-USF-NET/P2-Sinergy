@@ -13,6 +13,7 @@ import { AuthComponent } from './auth/auth.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { SpotifyLoginComponent } from './spotify-login/spotify-login.component';
 import { MoreChartsComponent } from './more-charts/more-charts.component';
+import { HomepageComponent } from './homepage/homepage.component';
 
 
 
@@ -27,6 +28,7 @@ import { MoreChartsComponent } from './more-charts/more-charts.component';
     UserFormComponent,
     SpotifyLoginComponent,
     MoreChartsComponent,
+    HomepageComponent,
   ],
   imports: [
     BrowserModule,

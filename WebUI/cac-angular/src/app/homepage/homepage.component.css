@@ -1,0 +1,17 @@
+.header-leaderboard {
+    color: white;
+    margin-left: 5%;
+    font-size: 45px;
+}
+.board-position { 
+    margin-top: 2%;
+    margin-left: 5%;
+}
+
+.welcome-position {
+    text-align: center;
+    margin-left: 45%;
+    margin-top: -5%;
+    font-size: 32px;
+    color:white;
+}
