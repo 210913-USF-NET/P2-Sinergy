@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Playlist } from '../models/Playlist';
+import { CacApiService } from '../service/cac-api.service';
 
 @Component({
   selector: 'app-playlist-maker',
@@ -7,7 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlaylistMakerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private currentRoute: ActivatedRoute, private cacService: CacApiService) { }
+
+  id = 0;
+  Playlist: Playlist ={
+    PlaylistID: 0,
+    UserID: 0,
+    user: '',
+    SongCount: 0,
+    Timeframe: 0
+  };
 
   ngOnInit(): void {
   }
