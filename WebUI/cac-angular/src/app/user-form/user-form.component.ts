@@ -21,8 +21,7 @@ export class UserFormComponent implements OnInit {
     account: '',
     admin: false
   };
-
-
+  playlists: playlist[] = [];
   ngOnInit(): void {
     this.currentRoute.params.subscribe(params => {
       this.id = params['id'];
@@ -30,7 +29,10 @@ export class UserFormComponent implements OnInit {
         this.User = result;
       });
     });
-
-  }
+      this.cacService.getUserPlaylists().then(result =>{
+        console.log(result)
+        this.playlists = result;
+  });
+}
 }
 

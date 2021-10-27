@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { User } from '../models/User';
 import { playlist } from '../models/spotifyPlaylist';
+import { map, take } from 'rxjs/operators';
 const PLAYLIST = "https://api.spotify.com/v1/me/playlists";
 
 @Injectable({
@@ -29,8 +30,21 @@ export class CacApiService {
     return this.http.get<User>(this.rootUrl + "/" + id).toPromise();
   }
 
+  getUserPlaylists(): Promise<playlist[]>
+  {
+    const headerDict = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer ' + sessionStorage.accessToken,
+    }
+    
+    const requestOptions = {                                                                                                                                                                                 
+      headers: new HttpHeaders(headerDict), 
+    };
+    return this.http.get<playlist[]>(PLAYLIST, requestOptions).toPromise();
+  }
   
-  // getUserPlaylists(): void {
+  // public getUserPlaylists(): void {
   //   let url = PLAYLIST
   //   fetch(url, {
   //     method: 'GET',
@@ -43,12 +57,13 @@ export class CacApiService {
   //   });
   // }
 
-  //   populateTable = function (playlists: playlist[]) {
+
+  //   public populateTable = function (playlist: playlist[]) {
   //   let table: HTMLTableElement | null = document.querySelector('table#playlist.playlists');
   //   if (table) {
   //     table.querySelectorAll('tr').forEach((elem) => elem.remove());
   //   }
-  //   playlists.forEach((play) => {
+  //   playlist.forEach((play) => {
 
   //     if (table) {
   //       let lastRowNum = table.tBodies[0].rows.length;
@@ -62,7 +77,8 @@ export class CacApiService {
   //     }
   //   })
   // }
-
-
-
 }
+
+
+
+

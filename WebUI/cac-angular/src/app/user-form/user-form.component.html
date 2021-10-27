@@ -1,20 +1,18 @@
 
 <div onclick="getUserDetails()"><button>hey</button></div>
 
-<div class="user"><h1></h1></div>
-<div class="email"><h1></h1></div>
+<div><h1 class="user"></h1></div>
+<div><h1 class="email"></h1></div>
 <div class="listContainer">
-    <table class="playlists" id="playlist">
+    <table>
         <thead class="minorHeader">
             <th>Playlist Name</th>
             <th>ID</th>
-            <th>No. of Songs</th>
         </thead>
         <tbody>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
+            <tr *ngFor="let list of playlists">
+                <td>{{list.name}}</td>
+                <td>{{list.id}}</td>
             </tr>
         </tbody>
     </table>

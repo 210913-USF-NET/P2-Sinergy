@@ -64,23 +64,22 @@ function handlePlaylistsResponse(){
     if ( this.status == 200 ){
        
 
-        for(var prop in data)
-        {
-            var item = data[prop]
-             var data = JSON.parse(this.responseText);
-        let username = document.querySelector('.user');
-        let captEl = document.createElement('caption');
-        let screenName = document.createTextNode(item.display_name);
-        captEl.appendChild(screenName);
-        username.appendChild(captEl);
-
+        
+        
         var data = JSON.parse(this.responseText);
-        let email = document.querySelector('.email');
-        let captEmail = document.createElement('caption');
-        let mail = document.createTextNode(item.email);
-        captEmail.appendChild(mail);
-        email.appendChild(captEmail);
-        }
+        // let username = document.querySelector('.user');
+        // let captEl = document.createElement('caption');
+        // let screenName = document.createTextNode(data.display_name);
+        // captEl.appendChild(screenName);
+        // username.appendChild(captEl);
+
+        // var data = JSON.parse(this.responseText);
+        // let email = document.querySelector('.email');
+        // let captEmail = document.createElement('caption');
+        // let mail = document.createTextNode(data.email);
+        // captEmail.appendChild(mail);
+        // email.appendChild(captEmail);
+        
 
         console.log(data);
         
