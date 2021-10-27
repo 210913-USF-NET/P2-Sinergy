@@ -23,7 +23,7 @@ export class UserFormComponent implements OnInit {
     account: '',
     admin: false
   };
-  user: user[] = [];
+  users: user[] = [];
   playlists: playlist[] = [];
   ngOnInit(): void {
     this.currentRoute.params.subscribe(params => {
@@ -40,7 +40,7 @@ export class UserFormComponent implements OnInit {
 
   this.cacService.getUserDetails().then(result =>{
     console.log(result)
-    this.user = result.items;
+    this.users = result.items;
 });
   
 }
