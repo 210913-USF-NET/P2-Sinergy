@@ -8,41 +8,81 @@ import Chart from 'chart.js/auto'
 })
 export class MoreChartsComponent implements AfterViewInit {
   myChart:any;
+  myChartTwo:any;
   constructor(private elementRef: ElementRef) { }
 
   ngAfterViewInit() { //app-more-charts
     let htmlRef = this.elementRef.nativeElement.querySelector('#app-more-charts');
     this.myChart = new Chart(htmlRef, {
-      type: 'bar',
+      type: 'doughnut',
       data: {
-          labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple'],
+          labels: ['Apples', 'Blueberries', 'Pineapples', 'Watermelons', 'Grapes', 'Philip'],
           datasets: [{
-              label: '# of Votes',
-              data: [21, 4, 15, 10, 21],
+              label: 'Best Fruit',
+              data: [21, 6, 15, 10, 21, 9],
               backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)',
-                  'rgba(75, 192, 192, 0.2)',
-                  'rgba(153, 102, 255, 0.2)'
+                  'rgb(255, 99, 132, 0.2)',
+                  'rgb(54, 162, 235, 0.2)',
+                  'rgb(255, 206, 86, 0.2)',
+                  'rgb(75, 192, 192, 0.2)',
+                  'rgb(153, 102, 255, 0.2)',
+                  'rgb(05, 128, 128, 0.2)'
               ],
               borderColor: [
-                  'rgba(255, 99, 132, 1)',
-                  'rgba(54, 162, 235, 1)',
-                  'rgba(255, 206, 86, 1)',
-                  'rgba(75, 192, 192, 1)',
-                  'rgba(153, 102, 255, 1)'
+                  'rgb(255, 99, 132, 1)',
+                  'rgb(54, 162, 235, 1)',
+                  'rgb(255, 206, 86, 1)',
+                  'rgb(75, 192, 192, 1)',
+                  'rgb(153, 102, 255, 1)',
+                  'rgb(05, 128, 128, 1)'
               ],
-              borderWidth: 1
-          }]
-      },
+            }]
+          },
       options: {
-          scales: {
-              y: {
-                  beginAtZero: true
-              }
+        plugins: {
+          legend: {
+            labels: {
+              color: "white"
             }
+          }
+        }
         }
     } );
-  }  
+    let htmlRefTwo = this.elementRef.nativeElement.querySelector('#app-more-charts_two');
+    this.myChartTwo = new Chart(htmlRefTwo, {
+      type: 'pie',
+      data: {
+          labels: ['Apples', 'Blueberries', 'Pineapples', 'Watermelons', 'Grapes', 'Philip'],
+          datasets: [{
+              label: 'Best Fruit',
+              data: [21, 6, 15, 10, 21, 9],
+              backgroundColor: [
+                  'rgb(255, 99, 132, 0.2)',
+                  'rgb(54, 162, 235, 0.2)',
+                  'rgb(255, 206, 86, 0.2)',
+                  'rgb(75, 192, 192, 0.2)',
+                  'rgb(153, 102, 255, 0.2)',
+                  'rgb(05, 128, 128, 0.2)'
+              ],
+              borderColor: [
+                  'rgb(255, 99, 132, 1)',
+                  'rgb(54, 162, 235, 1)',
+                  'rgb(255, 206, 86, 1)',
+                  'rgb(75, 192, 192, 1)',
+                  'rgb(153, 102, 255, 1)',
+                  'rgb(05, 128, 128, 1)'
+              ],
+            }]
+          },
+      options: {
+        plugins: {
+          legend: {
+            labels: {
+              color: "white"
+            }
+          }
+        }
+        }
+    } );
+  }
 }

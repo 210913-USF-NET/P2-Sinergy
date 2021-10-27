@@ -28,7 +28,9 @@ User: User = {
         this.User = result;
       });
     });
-  }
+
     
   }
+    
+}
 

@@ -1,4 +1,10 @@
-#divChart{
-    width: 10px;
-    height: 10px;
+.title{
+    color: white;
+}
+
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    margin: 0px, 30px, 0px, 30px;
 }
