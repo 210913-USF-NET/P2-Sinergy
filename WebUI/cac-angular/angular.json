@@ -34,7 +34,7 @@
             ],
             "scripts": [
               "src/assets/js/loginSpotify.js",
-              "src/assets/js/spotifyQueries.js"
+              "src/assets/js/spotifyScript.js"
             ]
           },
           "configurations": {
