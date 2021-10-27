@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Playlist } from '../models/Playlist';
+import { Songs } from '../models/Song';
 import { CacApiService } from '../service/cac-api.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-playlist-maker',
@@ -10,18 +12,22 @@ import { CacApiService } from '../service/cac-api.service';
 })
 export class PlaylistMakerComponent implements OnInit {
 
-  constructor(private currentRoute: ActivatedRoute, private cacService: CacApiService) { }
+  playlist: Songs[];
 
-  id = 0;
-  Playlist: Playlist ={
-    PlaylistID: 0,
-    UserID: 0,
-    user: '',
-    SongCount: 0,
-    Timeframe: 0
-  };
+  constructor(private currentRoute: ActivatedRoute, private cacService: CacApiService, private http: HttpClient) { 
+
+    
+  }
 
   ngOnInit(): void {
+    this.getPlaylist();
   }
+
+  getPlaylist(){
+    this.http.get<any>('https://ws.audioscrobbler.com/2.0/?method=tag.getweeklychartlist&tag=rank&api_key=bd9a22a5a89705767018c3e16cd85172&format=json').subscribe(
+      response => {console.log(response); this.playlist = response;}
+    )
+  }
+  
 
 }
