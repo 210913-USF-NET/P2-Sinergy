@@ -50,12 +50,12 @@ export class MoreChartsComponent implements AfterViewInit {
     } );
     let htmlRefTwo = this.elementRef.nativeElement.querySelector('#app-more-charts_two');
     this.myChartTwo = new Chart(htmlRefTwo, {
-      type: 'pie',
+      type: 'doughnut',
       data: {
           labels: ['Apples', 'Blueberries', 'Pineapples', 'Watermelons', 'Grapes', 'Philip'],
           datasets: [{
               label: 'Best Fruit',
-              data: [21, 6, 15, 10, 21, 9],
+              data: [15, 1, 5, 2, 7, 9],
               backgroundColor: [
                   'rgb(255, 99, 132, 0.2)',
                   'rgb(54, 162, 235, 0.2)',
