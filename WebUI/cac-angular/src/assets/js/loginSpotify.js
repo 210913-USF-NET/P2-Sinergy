@@ -2,25 +2,7 @@
 const AUTHORIZE = "https://accounts.spotify.com/authorize";
 const TOKEN = "https://accounts.spotify.com/api/token";
   // Helper Function to Extract Access Token for URL
-function handleAuthorizationResponse(){
-    if ( this.status == 200 ){
-        var data = JSON.parse(this.responseText);
-        console.log(data);
-        var data = JSON.parse(this.responseText);
-        if ( data.code != undefined ){
-            authCode = data.code;
-            sessionStorage.authCode = authCode;
-        }
-        if ( data.refresh_token  != undefined ){
-            refresh_token = data.refresh_token;
-            localStorage.setItem("refresh_token", refresh_token);
-        }
-    }
-    else {
-        console.log(this.responseText);
-        alert(this.responseText);
-    }
-}
+
 
 function fetchAccessToken(){
     if(sessionStorage.authCode == null || sessionStorage.authCode == "" || sessionStorage.authCode == undefined || sessionStorage.authCode == 'undefined'){
@@ -48,6 +30,7 @@ function callAuthorizationApi(body){
     xhr.send(body);
     xhr.onload = handleAuthorizationResponse;
 }
+
 
 function handleAuthorizationResponse(){
     if ( this.status == 200 ){
