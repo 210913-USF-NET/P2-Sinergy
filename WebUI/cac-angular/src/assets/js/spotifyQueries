@@ -1,0 +1,28 @@
+
+const PLAYLISTS = "https://api.spotify.com/v1/me";
+
+
+function callApi(method, url, body, callback){
+    let xhr = new XMLHttpRequest();
+    xhr.open(method, url, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.setRequestHeader('Authorization', 'Bearer ' + accessToken );
+    xhr.send(body);
+    xhr.onload = callback;
+}
+
+function refreshPlaylists(){
+    callApi( "GET", PLAYLISTS, null, handlePlaylistsResponse );
+}
+
+function handlePlaylistsResponse(){
+    if ( this.status == 200 ){
+        var data = JSON.parse(this.responseText);
+        console.log(data);
+        
+    }
+    else {
+        console.log(this.responseText);
+        alert(this.responseText);
+    }
+}
