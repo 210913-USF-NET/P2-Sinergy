@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CacApiService } from '../service/cac-api.service';
 import { User } from '../models/User';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { playlist } from '../models/spotifyPlaylist';
+
 
 @Component({
   selector: 'app-user-form',
@@ -12,13 +14,13 @@ export class UserFormComponent implements OnInit {
 
   constructor(private currentRoute: ActivatedRoute, private cacService: CacApiService) { }
 
-id = 0;
-User: User = {
-  userID: 0,
-  email: '',
-  account: '',
-  admin: false
-};  
+  id = 0;
+  User: User = {
+    userID: 0,
+    email: '',
+    account: '',
+    admin: false
+  };
 
 
   ngOnInit(): void {
@@ -29,8 +31,6 @@ User: User = {
       });
     });
 
-    
   }
-    
 }
 

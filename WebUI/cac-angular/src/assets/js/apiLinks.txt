@@ -46,3 +46,26 @@ function handlePlaylistsResponse(){
         alert(this.responseText);
     }
 }
+
+
+let populateTable = function (playlists: playlist[])
+{
+    let table: HTMLTableElement | null = document.querySelector('table#playlist.playlists');
+    if(table)
+    {
+        table.querySelectorAll('tr').forEach((elem) => elem.remove());
+    }
+    restaurants.forEach((play) => {
+       
+        if(table)
+        {   let lastRowNum = table.tBodies[0].rows.length;
+            let row: HTMLTableRowElement = table.insertRow(lastRowNum);
+            let name: HTMLTableCellElement  = row.insertCell(0);
+            let city: HTMLTableCellElement = row.insertCell(1);
+            let state: HTMLTableCellElement = row.insertCell(2);
+            name.innerHTML = play.name;
+            id.innerHTML = play.id;
+            songs.innerHTML = play.tracks.total;
+        }
+    })
+}
