@@ -7,6 +7,7 @@
     box-shadow: 5px 5px 5px black;
 }
 
+
 .playlist-table thead{
     background-color: rgb(193, 33, 199);
     color:black;
@@ -27,6 +28,15 @@
 .song-table {
     color: white;
     border-bottom: 5px solid rgb(255, 255, 255);
+
+#visual{
+    color: blueviolet;
+}
+
+.listContainer{
+    width: 500px;
+    border-bottom: honeydew;
+
     float: left;
     margin-left: 1%;
     border: 2px solid pink;

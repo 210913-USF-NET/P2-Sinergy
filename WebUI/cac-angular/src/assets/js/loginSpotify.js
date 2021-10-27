@@ -1,4 +1,5 @@
 
+
 const AUTHORIZE = "https://accounts.spotify.com/authorize";
 const TOKEN = "https://accounts.spotify.com/api/token";
 const PLAYLISTS = "https://api.spotify.com/v1/me/playlists";
@@ -7,6 +8,7 @@ const PLAY = "https://api.spotify.com/v1/me/player/play";
 const PAUSE = "https://api.spotify.com/v1/me/player/pause";
 const NEXT = "https://api.spotify.com/v1/me/player/next";
 const TRACKS = "https://api.spotify.com/v1/playlists/{{PlaylistId}}/tracks";
+
 
   // Helper Function to Extract Access Token for URL
 
@@ -108,7 +110,9 @@ function refreshChecker(){
 
 
 ///queries
-
+const AUTHORIZE = "https://accounts.spotify.com/authorize";
+const TOKEN = "https://accounts.spotify.com/api/token";
+const PROFILE = "https://api.spotify.com/v1/me";
 
 
 function callApi(method, url, body, callback){
@@ -127,6 +131,13 @@ function getUserDetails(){
 function handleResponse(){
     if ( this.status == 200 ){
         var data = JSON.parse(this.responseText);
+
+        let div = document.querySelector('.email');
+        let captionEl = document.createElement('caption');
+        let idNode = document.createTextNode(data.id);
+        captionEl.appendChild(idNode);
+        div.appendChild(captionEl);
+
         console.log(data);
         
     }
