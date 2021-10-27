@@ -3,6 +3,7 @@ import { CacApiService } from '../service/cac-api.service';
 import { User } from '../models/User';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { playlist } from '../models/spotifyPlaylist';
+const PROFILE = "https://api.spotify.com/v1/me";
 
 
 @Component({
@@ -21,8 +22,7 @@ export class UserFormComponent implements OnInit {
     account: '',
     admin: false
   };
-
-
+  playlists: playlist[] = [];
   ngOnInit(): void {
     this.currentRoute.params.subscribe(params => {
       this.id = params['id'];
@@ -31,6 +31,11 @@ export class UserFormComponent implements OnInit {
       });
     });
 
-  }
+      this.cacService.getUserPlaylists().then(result =>{
+        console.log(result)
+        this.playlists = result.items;
+  });
+  
+}
 }
 
