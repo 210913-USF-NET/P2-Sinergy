@@ -1,7 +1,3 @@
-
-const AUTHORIZE = "https://accounts.spotify.com/authorize";
-const TOKEN = "https://accounts.spotify.com/api/token";
-
   // Helper Function to Extract Access Token for URL
 
 
@@ -102,7 +98,9 @@ function refreshChecker(){
 
 
 ///queries
-
+const AUTHORIZE = "https://accounts.spotify.com/authorize";
+const TOKEN = "https://accounts.spotify.com/api/token";
+const PROFILE = "https://api.spotify.com/v1/me";
 
 
 
@@ -122,6 +120,13 @@ function getUserDetails(){
 function handleResponse(){
     if ( this.status == 200 ){
         var data = JSON.parse(this.responseText);
+
+        let div = document.querySelector('.email');
+        let captionEl = document.createElement('caption');
+        let idNode = document.createTextNode(data.id);
+        captionEl.appendChild(idNode);
+        div.appendChild(captionEl);
+
         console.log(data);
         
     }
