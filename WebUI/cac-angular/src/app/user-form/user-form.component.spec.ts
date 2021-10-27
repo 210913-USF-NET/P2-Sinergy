@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { PlaylistViewerComponent } from '../playlist-viewer/playlist-viewer.component';
 import { UserFormComponent } from './user-form.component';
 
 describe('UserFormComponent', () => {

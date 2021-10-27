@@ -4,6 +4,7 @@ import { User } from '../models/User';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { playlist } from '../models/spotifyPlaylist';
 import { Songs } from '../models/Song';
+import { Playlist } from '../models/Playlist';
 
 @Component({
   selector: 'app-playlist-viewer',
@@ -14,23 +15,23 @@ export class PlaylistViewerComponent implements OnInit {
 
   constructor(private currentRoute: ActivatedRoute, private cacService: CacApiService) { }
 
-  id = 0;
-  User: User = {
-    userID: 0,
-    email: '',
-    account: '',
-    admin: false
+  id = '37i9dQZF1DZ06evO1F4G5T';
+  Songs: Songs = {
+    PlaylistID: 0,
+    URL:'',
+    SongsID: 0,
+    InformationID: 0,
   };
-  playlist: Songs[] = [];
+  song: Songs[] = [];
   ngOnInit(): void {
     this.currentRoute.params.subscribe(params => {
       this.id = params['id'];
-      this.cacService.getUserById(this.id).then(result => {
-        this.User = result;
+      this.cacService.getSinglePlaylist(this.id).then(result => {
+        this.Songs = result;
       });
     });
 
-      this.cacService.getUserPlaylists().then(result =>{
+      this.cacService.getSinglePlaylist(this.id).then(result =>{
         console.log(result)
   });
   

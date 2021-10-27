@@ -1,4 +1,25 @@
-<p>playlist-viewer works!</p>
-<body onload="fetchTracks('3cEYpjA9oz9GiPac4AsH4n')">
-    working
-    </body>
+<div>
+    <br>
+    <h1 style="color: rgb(255, 255, 255); text-align:center">Users</h1>
+    <br>
+    <table class="table">
+        <thead> 
+            <th width="100">UserID</th>
+            <th>Song</th>
+            <th>Spotify Username</th>
+            <th width="150">View</th>
+        </thead>
+        <tbody class="bottom">
+            <tr *ngFor="let song of Songs" >
+                <td>{{song.href}}</td>
+                <td>{{song.total}}</td>
+                <td>{{song.items}}</td>
+                <td (click)="goToUser(song.informationId)"><button class="tbutton">View Playlist</button></td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    
+    
+    
+    
