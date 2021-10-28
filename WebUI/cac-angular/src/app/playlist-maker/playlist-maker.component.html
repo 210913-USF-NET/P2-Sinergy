@@ -23,22 +23,23 @@
     <br>
 
     <div>
-        <form action="/action_page.php">
+
+        <form action="/action_page.php" onsubmit="InfoSubmit()">
 
             <label for="playlistName">Playlist Name:</label><br>
-            <input type="text" id="playlistName" name="playlistName" placeholder="e.g. Living in the '80s" value=""><br><br>
+            <input type="text" id="playlistName" name="playlistName" placeholder="e.g. Living in the '80s"><br><br>
 
             <label for="listLength">Playlist Length:</label><br>
-            <input type="number" min="1" max="100" id="listLength" name="listLength" placeholder="10" value=""><br><br>
+            <input type="number" min="1" max="100" id="listLength" name="listLength" placeholder="10"><br><br>
 
             <label for="startDate">Start Date:</label><br>
-            <input type="date" id="startDate" name="Start Date" value=""><br><br>
+            <input type="date" id="startDate" name="Start Date"><br><br>
 
             <label for="endDate">End Date:</label><br>
-            <input type="date" id="endDate" name="End Date" value=""><br><br>
+            <input type="date" id="endDate" name="End Date"><br><br>
 
             <label for="lastFmName">Last.Fm Username:</label><br>
-            <input type="text" id="lastFmName" name="LastFmName" placeholder="e.g. siavash1996" value=""><br><br>
+            <input type="text" id="lastFmName" name="LastFmName" placeholder="e.g. siavash1996"><br><br>
             <br>
 
             <input class="button" type="submit" value="Submit">
@@ -50,12 +51,16 @@
 </div>
 
 <script>
-    document.getElementById(playlistName).value;
-    document.getElementById(listLength).value;
-    document.getElementById(startDate).value;
-    document.getElementById(endDate).value;
-    document.getElementById(lastFmName).value;
-    console.log('Start:' + startDate);
+    function InfoSubmit(playlistName, listLength, startDate, endDate, lastFmName) {
+        document.getElementById(playlistName).value;
+        document.getElementById(listLength).value;
+        document.getElementById(startDate).value;
+        document.getElementById(endDate).value;
+        document.getElementById(lastFmName).value;
+        console.log('Start:' + startDate);
+
+        return playlistName, listLength, startDate, endDate, lastFmName;
+    }
 </script>
 
 <table>
