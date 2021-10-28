@@ -9,13 +9,13 @@
         <thead>
             <th width="600px">Playlist Name</th>
             <th width="100px">No. of Songs</th>
-            <th width="100px"></th>
+            <th width="60px"></th>
         </thead>
         <tbody>
             <tr *ngFor="let list of playlists" id="visual">
                 <td id="{{list.id}}" onclick="setPlaylistURI(this.id)">{{list.name}}</td>
                 <td>{{list.tracks.total}}</td>
-                <td (click)="goToPlaylist(list.id)">Edit</td>
+                <td class="edit" (click)="goToPlaylist(list.id)">Edit</td>
             </tr>
             
         </tbody>
@@ -25,4 +25,15 @@
 
 <div class="embed"><app-embed-playlist></app-embed-playlist></div>
 </div>
-
+<br>
+<br>
+<div>
+    <footer class="bg-light text-center text-lg-start">
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgb(193, 33, 199); margin-bottom: auto;">
+            © 2021 Copyright:
+            <a class="text-dark">Sinergy</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+</div>
