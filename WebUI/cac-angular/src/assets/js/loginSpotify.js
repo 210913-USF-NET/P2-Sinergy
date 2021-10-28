@@ -265,3 +265,27 @@ function handlePlaylistResponse(){
         alert(this.responseText);
     }
 }
+
+function spotifySearch(searchTerm){
+    let xhr = new XMLHttpRequest();
+
+    xhr.open('GET', "https://api.spotify.com/v1/search?q="+searchTerm+"&type=track%2Cartist&market=US&limit=10&offset=5", true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.setRequestHeader('Authorization', 'Bearer '+sessionStorage.authCode);
+    xhr.send();
+    xhr.onload=handleSearchResponse;
+}
+
+function handleSearchResponse(){
+    if ( this.status == 200 ){
+        var data = JSON.parse(this.responseText);
+        console.log(data);
+    }
+    else if ( this.status == 401 ){
+        console.log("something wrong happened")
+    }
+    else {
+        console.log(this.responseText);
+        alert(this.responseText);
+    }
+}
