@@ -9,11 +9,9 @@
             <th width="150">View</th>
         </thead>
         <tbody>
-            <tr *ngFor="let song of song">
+            <tr *ngFor="let item of songs">
                 <td>user</td>
-                <td>{{song.track.name}}</td>
-                <td>just filling up empty space</td>
-                <td>hi</td>
+                <td>{{item.track.name}}</td>
             </tr>
         </tbody>
     </table>

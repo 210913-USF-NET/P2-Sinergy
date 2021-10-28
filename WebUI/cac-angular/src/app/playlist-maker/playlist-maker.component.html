@@ -56,3 +56,22 @@
         }
     }).then(res => res).then(data => console.log(data))
 </script>
+
+
+
+<table>
+    <thead>
+    <th>Artist Name</th>
+    <th>Song Name</th>
+    <th>Play Count</th>
+    <th>Rank</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of song">
+            <td>{{item.artist}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.playcount}}</td>
+            <td>{{item.rank}}</td>
+        </tr>
+    </tbody>
+</table>
