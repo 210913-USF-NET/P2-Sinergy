@@ -67,10 +67,10 @@
     </thead>
     <tbody>
         <tr *ngFor="let item of song">
-            <td>{{item.artist}}</td>
+            <td>{{item.artist['#text']}}</td>
             <td>{{item.name}}</td>
             <td>{{item.playcount}}</td>
-            <td>{{item.rank}}</td>
+            <td>{{item['@attr'].rank}}</td>
         </tr>
     </tbody>
 </table>
