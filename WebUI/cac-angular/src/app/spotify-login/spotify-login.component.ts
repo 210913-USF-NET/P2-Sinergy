@@ -15,8 +15,7 @@ export class SpotifyLoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  btnClick(){
+  endClick(){
     this.router.navigate(['/home']);
   }
-
 }

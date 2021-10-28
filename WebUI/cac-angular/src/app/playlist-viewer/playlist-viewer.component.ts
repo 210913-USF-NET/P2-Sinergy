@@ -43,7 +43,6 @@ export class PlaylistViewerComponent implements OnInit {
         this.songs = result.items;
         this.artist = result.items.track;
         console.log(this.songs[15])
-       
         
   });
   

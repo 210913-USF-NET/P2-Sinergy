@@ -9,13 +9,13 @@
         <thead>
             <th width="600px">Playlist Name</th>
             <th width="100px">No. of Songs</th>
-            <th width="100px"></th>
+            <th width="60px"></th>
         </thead>
         <tbody>
             <tr *ngFor="let list of playlists" id="visual">
                 <td id="{{list.id}}" onclick="setPlaylistURI(this.id)">{{list.name}}</td>
                 <td>{{list.tracks.total}}</td>
-                <td (click)="goToPlaylist(list.id)">Edit</td>
+                <td class="edit" (click)="goToPlaylist(list.id)">Edit</td>
             </tr>
             
         </tbody>
