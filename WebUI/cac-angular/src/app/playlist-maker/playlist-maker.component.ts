@@ -30,7 +30,7 @@ export class PlaylistMakerComponent implements OnInit {
     )
   }
 
-  btnClick(){
+  onClick(){
     this.router.navigate(['/playlist/:id']);
   }
 
