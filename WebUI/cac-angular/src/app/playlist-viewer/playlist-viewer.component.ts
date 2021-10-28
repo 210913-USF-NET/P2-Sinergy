@@ -41,9 +41,9 @@ export class PlaylistViewerComponent implements OnInit {
 
       this.cacService.getSinglePlaylist(this.id).then(result =>{
         this.songs = result.items;
-        console.log(result)
-        console.log(this.songs[15].track.name)
-        console.log(this.songs[15].track.artists[0].name)
+        this.artist = result.items.track;
+        console.log(this.songs[15])
+       
         
   });
   

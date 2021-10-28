@@ -6,12 +6,13 @@
         <thead> 
             <th width="100">Name</th>
             <th>Song</th>
-            <th width="150">View</th>
+            <th>Popularity</th>
         </thead>
         <tbody>
-            <tr *ngFor="let item of songs">
-                <td>user</td>
-                <td>{{item.track.name}}</td>
+            <tr *ngFor="let name of songs">
+                <td>{{name.track.artists[0].name}}</td>
+                <td>{{name.track.name}}</td>
+                <td>{{name.track.popularity}}</td>
             </tr>
         </tbody>
     </table>
