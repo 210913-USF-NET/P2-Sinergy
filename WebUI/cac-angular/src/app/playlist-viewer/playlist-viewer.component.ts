@@ -27,8 +27,9 @@ export class PlaylistViewerComponent implements OnInit {
     SongsID: 0,
     InformationID: 0,
   };
-  song: songs[] = [];
+  songs: songs[] = [];
   artist: artists[] = [];
+
   ngOnInit(): void {
     this.currentRoute.params.subscribe(params => {
       this.id = params['id'];
@@ -38,10 +39,11 @@ export class PlaylistViewerComponent implements OnInit {
     });
 
       this.cacService.getSinglePlaylist().then(result =>{
-        this.song = result.items;
+        this.songs = result.items;
         console.log(result)
-        console.log(this.song[15].track.name)
-        console.log(this.song[15].track.artists[0].name)
+        console.log(this.songs[15].track.name)
+        console.log(this.songs[15].track.artists[0].name)
+        
   });
   
 }

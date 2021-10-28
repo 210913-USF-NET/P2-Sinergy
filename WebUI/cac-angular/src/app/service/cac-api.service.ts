@@ -74,7 +74,21 @@ export class CacApiService {
     };
     return this.http.get<any>(PROFILE, requestOptions).toPromise();
   }
-  
+
+  getTopTracks(username:string, from: string, to: string): Promise<any>
+  {
+    let url ='http://ws.audioscrobbler.com/2.0/?method=user.getweeklytrackchart&user='+username+'&api_key=bd9a22a5a89705767018c3e16cd85172&from='+from+'&to='+to+'&format=json';
+    const headerDict = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    }
+    
+    const requestOptions = {                                                                                                                                                                                 
+      headers: new HttpHeaders(headerDict), 
+    };
+
+    return this.http.get<any>(url, requestOptions).toPromise();
+  }
   
 }
 

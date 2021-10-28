@@ -35,7 +35,7 @@
             <input type="text" id="lastFmName" name="LastFmName" placeholder="e.g. siavash1996" value=""><br><br>
             <br>
 
-            <input class="button" type="submit" value="Submit" (click)="onClick()">
+            <input class="button" type="submit" value="Submit">
         </form>
         <br>
         <br>
@@ -56,3 +56,22 @@
         }
     }).then(res => res).then(data => console.log(data))
 </script>
+
+
+
+<table>
+    <thead>
+    <th>Artist Name</th>
+    <th>Song Name</th>
+    <th>Play Count</th>
+    <th>Rank</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of song">
+            <td>{{item.artist}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.playcount}}</td>
+            <td>{{item.rank}}</td>
+        </tr>
+    </tbody>
+</table>

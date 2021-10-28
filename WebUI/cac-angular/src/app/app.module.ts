@@ -16,6 +16,8 @@ import { MoreChartsComponent } from './more-charts/more-charts.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { CommonModule } from '@angular/common';
 import { EmbedPlaylistComponent } from './embed-playlist/embed-playlist.component';
+import { FormsModule } from '@angular/forms';
+import { PlaylistViewerComponent } from './playlist-viewer/playlist-viewer.component';
 
 
 
@@ -33,12 +35,14 @@ import { EmbedPlaylistComponent } from './embed-playlist/embed-playlist.componen
     MoreChartsComponent,
     HomepageComponent,
     EmbedPlaylistComponent,
+    PlaylistViewerComponent
     
   ],
   imports: [
     BrowserModule,
     CommonModule,
     AppRoutingModule,
+    FormsModule,
     HttpClientModule,
     AuthModule.forRoot({
       domain: environment.authDomain,

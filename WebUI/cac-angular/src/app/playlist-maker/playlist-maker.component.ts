@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { APP_BOOTSTRAP_LISTENER, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Playlist } from '../models/Playlist';
 import { Songs } from '../models/Song';
 import { CacApiService } from '../service/cac-api.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { song } from '../models/LastFM Models/LastFMSong'
 
 @Component({
   selector: 'app-playlist-maker',
@@ -15,22 +16,19 @@ export class PlaylistMakerComponent implements OnInit {
 
   playlist: Songs[];
 
-  constructor(private currentRoute: ActivatedRoute, private cacService: CacApiService, private http: HttpClient, private router: Router) { 
+  constructor(private currentRoute: ActivatedRoute, private cacService: CacApiService, private http: HttpClient, private router: Router) {  }
 
     
-  }
-
+ 
+  song: any;
   ngOnInit(): void {
-    this.getPlaylist();
-    }
-  getPlaylist(){
-    this.http.get<any>('https://ws.audioscrobbler.com/2.0/?method=tag.getweeklychartlist&tag=rank&api_key=bd9a22a5a89705767018c3e16cd85172&format=json').subscribe(
-      response => {this.playlist = response; console.log(response);}
-    )
-  }
-
-  onClick(){
-    this.router.navigate(['/playlist/:id']);
-  }
+    
+    this.cacService.getTopTracks('Bluefalcon407', '0', '2635456994').then(result =>{
+      this.song = result.track;
+      console.log(result)
+      console.log(result.weeklytrackchart.track[4].artist['#text'])
+    })
+  
+}
 
 }
