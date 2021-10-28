@@ -9,6 +9,7 @@
     margin-right: auto;
 }
 
+
 .playlist-table thead{
     background-color: rgb(193, 33, 199);
     color:black;
@@ -28,7 +29,7 @@
     border-bottom: 3px solid rgb(255, 255, 255)
 }
 
-.song-table {
+/* .song-table {
     color: white;
     width: 550px;
     table-layout: fixed;
@@ -56,4 +57,4 @@
     border-right: 3px solid rgb(255, 255, 255);
     border-top: none!important;
     border-bottom: 3px solid rgb(255, 255, 255)
-}
+} */

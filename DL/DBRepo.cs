@@ -51,9 +51,10 @@ namespace DL
             {
                 PlaylistID = updatedPlaylist.PlaylistID,
                 UserID = updatedPlaylist.UserID,
-                user = updatedPlaylist.user,
+                Username = updatedPlaylist.Username,
                 SongCount = updatedPlaylist.SongCount,
-                Timeframe = updatedPlaylist.Timeframe,
+                StartDate = updatedPlaylist.StartDate,
+                EndDate = updatedPlaylist.EndDate,
                 Date = updatedPlaylist.Date
 
             };

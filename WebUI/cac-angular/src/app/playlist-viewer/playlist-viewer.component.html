@@ -2,7 +2,7 @@
     <br>
     <h1 style="color: rgb(255, 255, 255); text-align:center">Users</h1>
     <br>
-    <table class="table">
+    <table class="table table-light">
         <thead> 
             <th width="100">UserID</th>
             <th>Song</th>
@@ -10,15 +10,13 @@
             <th width="150">View</th>
         </thead>
         <tbody class="bottom">
-            <tr *ngFor="let song of Songs" >
-                <td>{{song.href}}</td>
-                <td>{{song.total}}</td>
-                <td>{{song.items}}</td>
-                <td (click)="goToUser(song.informationId)"><button class="tbutton">View Playlist</button></td>
+            <tr *ngFor="let song of song">
+                <td>{{song.track.name}}</td>
+                
             </tr>
         </tbody>
     </table>
-    </div>
+</div>
     
     
     

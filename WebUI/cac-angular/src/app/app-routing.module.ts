@@ -7,14 +7,16 @@ import { PlaylistMakerComponent } from './playlist-maker/playlist-maker.componen
 import { UserFormComponent } from './user-form/user-form.component';
 import { MoreChartsComponent } from './more-charts/more-charts.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { PlaylistViewerComponent } from './playlist-viewer/playlist-viewer.component';
 
 const routes: Routes = [
   {path: 'home', component: HomepageComponent },
   {path: 'login', component: LoginComponent },
-  {path: 'users/:id', component: UserFormComponent},
-  {path: 'users', component: UserListComponent},
+  {path: 'user/:id', component: UserFormComponent},
+  {path: 'user', component: UserListComponent},
   {path: 'playlist-maker', component: PlaylistMakerComponent},
   {path: 'more-charts', component: MoreChartsComponent},
+  {path: 'playlist/:id', component: PlaylistViewerComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'}
 ];
 
