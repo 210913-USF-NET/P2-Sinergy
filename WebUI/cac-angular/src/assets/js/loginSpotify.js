@@ -7,6 +7,52 @@ const PLAY = "https://api.spotify.com/v1/me/player/play";
 const PAUSE = "https://api.spotify.com/v1/me/player/pause";
 const NEXT = "https://api.spotify.com/v1/me/player/next";
 const TRACKS = "https://api.spotify.com/v1/playlists/{{PlaylistId}}/tracks";
+const FMTRACKS ="https://ws.audioscrobbler.com/2.0/?method=user.getweeklytrackchart"
+const APIKEY = "bd9a22a5a89705767018c3e16cd85172"
+
+
+
+function uriSelector(){
+    console.log("please work");
+    document.getElementById('webplayer').src = sessionStorage.playlistURI;
+}
+
+//fm first
+
+
+function callFMApi(method, url, body, callback){
+    let xhr = new XMLHttpRequest();
+    xhr.open(method, url, true);
+    body+="&api_key="+APIKEY;
+    body+="&format=json"
+    console.log(body);
+    xhr.send(body);
+    xhr.onload = callback;
+}
+
+function userTopTracks(user, startTime, endTime){
+    let body = "&user="+user;
+    body +="&from="+startTime;
+    body+="&to="+endTime;
+    callFMApi("POST", FMTRACKS, body, handleFMTracksResponse);
+}
+
+
+function handleFMTracksResponse(){
+    if ( this.status == 200 ){
+        var data = JSON.parse(this.responseText);
+        console.log(data);
+        sessionStorage.currentPlaylist = data;
+        console.log(sessionStorage.currentPlaylist);
+    }
+    else if ( this.status == 401 ){
+        console.log("something wrong happened")
+    }
+    else {
+        console.log(this.responseText);
+        alert(this.responseText);
+    }
+}
 
   // Helper Function to Extract Access Token for URL
 
@@ -56,6 +102,9 @@ function handleAuthorizationResponse(){
     }
 }
 function readAuthToken(){
+    if(sessionStorage.playlistURI == null || sessionStorage.playlistURI == "" || sessionStorage.playlistURI == undefined || sessionStorage.playlistURI == 'undefined'){
+        setPlaylistURI("6LlfZhXIQdr8sp2j6MVflA");
+    }
     const getUrlParameter = (sParam) => {
         let sPageURL = window.location.search.substring(1),////substring will take everything after the https link and split the #/&
             sURLVariables = sPageURL != undefined && sPageURL.length > 0 ? sPageURL.split('#') : [],
@@ -101,12 +150,17 @@ function loginSpotify(){
 function clearAuthCode(){
     sessionStorage.removeItem('authCode');
     sessionStorage.removeItem('refresh_token');
+
+    sessionStorage.removeItem('playlistURI');
     window.location.replace('http://localhost:4200/home')
 }
 
 
-function refreshChecker(){
-    console.log(sessionStorage.refresh_token);
+function setPlaylistURI(id){
+    sessionStorage.playlistURI="https://open.spotify.com/embed/playlist/"+id;
+    console.log('set playlist');
+    console.log(sessionStorage.playlistURI),
+    window.location.reload();
 }
 
 

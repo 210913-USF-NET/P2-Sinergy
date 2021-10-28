@@ -30,12 +30,12 @@ export class UserFormComponent implements OnInit {
   ngOnInit(): void {
 
 
-    this.currentRoute.params.subscribe(params => {
-      this.id = params['id'];
-      this.cacService.getUserById(this.id).then(result => {
-        this.User = result;
-      });
-    });
+    // this.currentRoute.params.subscribe(params => {
+    //   this.id = params['id'];
+    //   this.cacService.getUserById(this.id).then(result => {
+    //     this.User = result;
+    //   });
+    // });
 
     this.cacService.getUserPlaylists().then(result => {
       console.log(result)
