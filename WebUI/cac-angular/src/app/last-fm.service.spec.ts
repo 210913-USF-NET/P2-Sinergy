@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { LastFMService } from './last-fmservice.service';
+import { LastFMService } from './last-fm.service';
 
 describe('LastFMServiceService', () => {
   let service: LastFMService;
