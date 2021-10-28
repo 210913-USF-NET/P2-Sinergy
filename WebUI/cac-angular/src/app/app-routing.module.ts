@@ -12,8 +12,8 @@ import { PlaylistViewerComponent } from './playlist-viewer/playlist-viewer.compo
 const routes: Routes = [
   {path: 'home', component: HomepageComponent },
   {path: 'login', component: LoginComponent },
-  {path: 'user/:id', component: UserFormComponent},
-  {path: 'user', component: UserListComponent},
+  {path: 'user', component: UserFormComponent},
+  {path: 'userlist', component: UserListComponent},
   {path: 'playlist-maker', component: PlaylistMakerComponent},
   {path: 'more-charts', component: MoreChartsComponent},
   {path: 'playlist/:id', component: PlaylistViewerComponent},
