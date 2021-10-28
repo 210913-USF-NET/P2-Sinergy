@@ -34,15 +34,15 @@ export class PlaylistViewerComponent implements OnInit {
     this.currentRoute.params.subscribe(params => {
       this.id = params['id'];
       this.cacService.getSinglePlaylist().then(result => {
-        this.Songs = result;
+        this.Songs = result.track;
       });
     });
 
       this.cacService.getSinglePlaylist().then(result =>{
         this.songs = result.items;
-        console.log(result)
-        console.log(this.songs[15].track.name)
-        console.log(this.songs[15].track.artists[0].name)
+        this.artist = result.items.track;
+        console.log(this.songs[15])
+       
         
   });
   
