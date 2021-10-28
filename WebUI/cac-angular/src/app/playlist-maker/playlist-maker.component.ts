@@ -24,7 +24,7 @@ export class PlaylistMakerComponent implements OnInit {
     this.getPlaylist();
     }
   getPlaylist(){
-    this.http.get<any>('https://ws.audioscrobbler.com/2.0/?method=tag.getweeklychartlist&tag=rank&api_key=bd9a22a5a89705767018c3e16cd85172&format=json').subscribe(
+    this.http.get<any>('http://ws.audioscrobbler.com/2.0/?method=user.getweeklytrackchart&user=siavash1996&api_key=bd9a22a5a89705767018c3e16cd85172&from=1420169653&to=1451705653&format=json').subscribe(
       response => {this.playlist = response; console.log(response);}
     )
   }
