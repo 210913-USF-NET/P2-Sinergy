@@ -1,5 +1,17 @@
 <html>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+    function enter(ele) {
+        if(event.key === 'Enter') {
+            alert(ele.value);        
+        }
+    }
+    </script>
+    <br>
+    <div class="url">
+        <span>last.fm/user/</span>
+        <input type="text" class="box enter" placeholder="username" onkeydown="enter(this)">
+    </div>
     <br>
     <h1 class='title'>A Graph</h1>
     <br>
