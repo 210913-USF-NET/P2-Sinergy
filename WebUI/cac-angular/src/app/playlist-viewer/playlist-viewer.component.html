@@ -1,23 +1,21 @@
 <div>
     <br>
-    <h1 style="color: rgb(255, 255, 255); text-align:center">Users</h1>
+    <h1 style="color: rgb(255, 255, 255); text-align:center; font-weight: bold; text-shadow: 3px 3px black;">Playlist</h1>
     <br>
-    <table class="table table-light">
+    <table class="table">
         <thead> 
             <th width="100">UserID</th>
             <th>Song</th>
             <th>Spotify Username</th>
             <th width="150">View</th>
         </thead>
-        <tbody class="bottom">
+        <tbody>
             <tr *ngFor="let song of song">
+                <td>user</td>
                 <td>{{song.track.name}}</td>
-                
+                <td>just filling up empty space</td>
+                <td>hi</td>
             </tr>
         </tbody>
     </table>
 </div>
-    
-    
-    
-    

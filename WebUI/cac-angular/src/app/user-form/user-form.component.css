@@ -1,12 +1,19 @@
+.profile {
+    color:white;
+    text-align: center;
+    visibility: hidden;
+}
+
 .playlist-table{
     color: white;
-    width: 400px;
+    width: 700px;
     table-layout: fixed;
     text-align:center;
     border-collapse: collapse;
     vertical-align: middle;
     margin-left: auto;
     margin-right: auto;
+    box-shadow: 5px 5px 5px black;
 }
 
 

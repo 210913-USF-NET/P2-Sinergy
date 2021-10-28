@@ -42,10 +42,18 @@ export class MoreChartsComponent implements AfterViewInit {
         plugins: {
           legend: {
             labels: {
-              color: "white"
+              color: "white",
             }
+          },
+          title: {
+            display: true,
+            text: 'Custom Chart Title',
+            color: "white",
+            font: {
+              size: 25
+            }
+            },
           }
-        }
         }
     } );
     let htmlRefTwo = this.elementRef.nativeElement.querySelector('#app-more-charts_two');
@@ -74,15 +82,23 @@ export class MoreChartsComponent implements AfterViewInit {
               ],
             }]
           },
-      options: {
-        plugins: {
-          legend: {
-            labels: {
-              color: "white"
+          options: {
+            plugins: {
+              legend: {
+                labels: {
+                  color: "white",
+                }
+              },
+              title: {
+                display: true,
+                text: 'Custom Chart Title 1',
+                color: "white",
+                font: {
+                  size: 25
+                } 
+              },
             }
           }
-        }
-        }
     } );
   }
 }
