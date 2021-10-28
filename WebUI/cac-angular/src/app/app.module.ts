@@ -14,6 +14,8 @@ import { UserFormComponent } from './user-form/user-form.component';
 import { SpotifyLoginComponent } from './spotify-login/spotify-login.component';
 import { MoreChartsComponent } from './more-charts/more-charts.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { CommonModule } from '@angular/common';
+import { EmbedPlaylistComponent } from './embed-playlist/embed-playlist.component';
 import { FormsModule } from '@angular/forms';
 
 
@@ -31,10 +33,12 @@ import { FormsModule } from '@angular/forms';
     SpotifyLoginComponent,
     MoreChartsComponent,
     HomepageComponent,
+    EmbedPlaylistComponent,
     
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
