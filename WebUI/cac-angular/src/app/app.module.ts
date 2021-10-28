@@ -14,6 +14,7 @@ import { UserFormComponent } from './user-form/user-form.component';
 import { SpotifyLoginComponent } from './spotify-login/spotify-login.component';
 import { MoreChartsComponent } from './more-charts/more-charts.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -35,6 +36,7 @@ import { HomepageComponent } from './homepage/homepage.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     HttpClientModule,
     AuthModule.forRoot({
       domain: environment.authDomain,

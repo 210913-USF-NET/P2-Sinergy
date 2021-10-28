@@ -1,16 +1,15 @@
 <div>
     <br>
-    <h1 style="color: rgb(255, 255, 255); text-align:center">Users</h1>
+    <h1 style="color: rgb(255, 255, 255); text-align:center">Playlist</h1>
     <br>
     <table class="table table-light">
         <thead> 
-            <th width="100">UserID</th>
+            <th width="100">Name</th>
             <th>Song</th>
             <th>Spotify Username</th>
-            <th width="150">View</th>
         </thead>
         <tbody class="bottom">
-            <tr *ngFor="let song of song">
+            <tr *ngFor="let song of songs">
                 <td>{{song.track.name}}</td>
                 
             </tr>
