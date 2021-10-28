@@ -1,5 +1,5 @@
 <div class="profile">
-   <h1>Username: {{user.display_name}}</h1>
+   <!-- <h1>Username: {{user.display_name}}</h1> -->
 </div>
 <br>
 <div class="playlist-table">
@@ -12,7 +12,7 @@
         </thead>
         <tbody>
             <tr *ngFor="let list of playlists" id="visual">
-                <td id="{{list.id}}" onclick="alert(this.id)">{{list.name}}</td>
+                <td id="{{list.id}}" onclick="setPlaylistURI(this.id)">{{list.name}}</td>
                 <td>{{list.tracks.total}}</td>
             </tr>
             
@@ -20,6 +20,8 @@
     </table>
 </div>
 
+
+<app-embed-playlist></app-embed-playlist>
 <!-- <div class="song-table">
         <table>
             <thead>

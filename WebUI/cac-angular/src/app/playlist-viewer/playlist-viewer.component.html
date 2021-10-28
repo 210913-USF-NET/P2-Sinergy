@@ -6,13 +6,11 @@
         <thead> 
             <th width="100">UserID</th>
             <th>Song</th>
-            <th>Spotify Username</th>
             <th width="150">View</th>
         </thead>
-        <tbody class="bottom">
-            <tr *ngFor="let song of song">
+        <tbody>
+            <tr *ngFor="let song of song" id="visual">\
                 <td>{{song.track.name}}</td>
-                
             </tr>
         </tbody>
     </table>
