@@ -45,9 +45,9 @@ export class CacApiService {
   }
 
   
-  getSinglePlaylist(playlist_id): Promise<any>
+  getSinglePlaylist(): Promise<any>
   {
-    let url ='https://api.spotify.com/v1/playlists'+playlist_id+'/tracks';
+    let url ='https://api.spotify.com/v1/playlists/7LBdb10KSLCOIaEc6cDbj2/tracks';
     const headerDict = {
       'Content-Type': 'application/json',
       'Accept': 'application/json',

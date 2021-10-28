@@ -17,6 +17,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +30,7 @@ import { HomepageComponent } from './homepage/homepage.component';
     SpotifyLoginComponent,
     MoreChartsComponent,
     HomepageComponent,
+    
   ],
   imports: [
     BrowserModule,
