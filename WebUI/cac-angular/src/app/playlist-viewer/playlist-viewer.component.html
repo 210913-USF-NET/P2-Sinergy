@@ -9,10 +9,17 @@
             <th>Popularity</th>
         </thead>
         <tbody>
+<<<<<<< HEAD
+            <tr *ngFor="let item of songs">
+                <td>user</td>
+                <td>{{item.track.name}}</td>
+                <td>view</td>
+=======
             <tr *ngFor="let name of songs">
                 <td>{{name.track.artists[0].name}}</td>
                 <td>{{name.track.name}}</td>
                 <td>{{name.track.popularity}}</td>
+>>>>>>> e1846267a3f274def94c00f1aadcb966a27f70ba
             </tr>
         </tbody>
     </table>
