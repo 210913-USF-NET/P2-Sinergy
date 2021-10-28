@@ -101,6 +101,7 @@ function loginSpotify(){
 function clearAuthCode(){
     sessionStorage.removeItem('authCode');
     sessionStorage.removeItem('refresh_token');
+    window.location.replace('http://localhost:4200/home')
 }
 
 
