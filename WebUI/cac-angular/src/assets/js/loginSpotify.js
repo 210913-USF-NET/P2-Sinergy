@@ -226,3 +226,66 @@ function handleTracksResponse(){
         alert(this.responseText);
     }
 }
+
+
+//LastFM-spotify together
+function createNewPlaylist(playlistName, userID){
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "https://api.spotify.com/v1/users/"+userID+"/playlists", true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.setRequestHeader('Authorization', 'Bearer '+sessionStorage.authCode);
+    xhr.send(JSON.stringify({name: playlistName, public: false, description: "This playlist was brought to you by Cacophany Industries!"}));
+    xhr.onload = handlePlaylistResponse;
+    
+}
+
+function addSongsToPlaylist(songsToAdd, playlistID){
+    let xhr = new XMLHttpRequest();
+    
+    //Note that the songsToAdd MUST be in the form "spotify:track:<SongId>", and not just the SongId
+
+    xhr.open("POST", "https://api.spotify.com/v1/playlists/"+playlistID+"/tracks", true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.setRequestHeader('Authorization', 'Bearer '+sessionStorage.authCode);
+    xhr.send(JSON.stringify({uris: songsToAdd}));
+    xhr.onload = handlePlaylistResponse;
+}
+
+function handlePlaylistResponse(){
+    if ( this.status == 200 ){
+        var data = JSON.parse(this.responseText);
+        console.log(data);
+        console.alert("success!  "+data);
+    }
+    else if ( this.status == 401 ){
+        console.log("something wrong happened")
+    }
+    else {
+        console.log(this.responseText);
+        alert(this.responseText);
+    }
+}
+
+function spotifySearch(searchTerm){
+    let xhr = new XMLHttpRequest();
+
+    xhr.open('GET', "https://api.spotify.com/v1/search?q="+searchTerm+"&type=track%2Cartist&market=US&limit=10&offset=5", true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.setRequestHeader('Authorization', 'Bearer '+sessionStorage.authCode);
+    xhr.send();
+    xhr.onload=handleSearchResponse;
+}
+
+function handleSearchResponse(){
+    if ( this.status == 200 ){
+        var data = JSON.parse(this.responseText);
+        console.log(data);
+    }
+    else if ( this.status == 401 ){
+        console.log("something wrong happened")
+    }
+    else {
+        console.log(this.responseText);
+        alert(this.responseText);
+    }
+}
