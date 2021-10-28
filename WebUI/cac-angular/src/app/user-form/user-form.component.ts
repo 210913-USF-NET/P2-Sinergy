@@ -23,9 +23,13 @@ export class UserFormComponent implements OnInit {
     account: '',
     admin: false
   };
-  users: user[] = [];
+  user: user;
   playlists: playlist[] = [];
+
+
   ngOnInit(): void {
+
+
     this.currentRoute.params.subscribe(params => {
       this.id = params['id'];
       this.cacService.getUserById(this.id).then(result => {
@@ -33,16 +37,19 @@ export class UserFormComponent implements OnInit {
       });
     });
 
-      this.cacService.getUserPlaylists().then(result =>{
-        console.log(result)
-        this.playlists = result.items;
-  });
-  
-  this.cacService.getUserDetails().then(result =>{
-    console.log(result)
-    this.users = result.Object;
-});
-  
-}
+    this.cacService.getUserPlaylists().then(result => {
+      console.log(result)
+      this.playlists = result.items;
+      console.log(this.playlists[0].tracks.total)
+    });
+
+    this.cacService.getUserDetails().then(result => {
+      console.log(result)
+      console.log(result.display_name)
+      this.user = result;
+      this.cacService.addUser({email: this.user.email, account: this.user.id})
+    });
+
+  }
 }
 

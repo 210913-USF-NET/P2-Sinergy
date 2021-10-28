@@ -1,5 +1,6 @@
-
-<script src="assets/js/spotifyQueries.js"></script>
+<div class="profile">
+   <h1>Username: {{user.display_name}}</h1>
+</div>
 <br>
 <div class="playlist-table">
 <div class="listContainer">
@@ -8,6 +9,7 @@
         <thead>
             <th width="300px">ID</th>
             <th width="450px">Playlist Name</th>
+            <th>No. of Songs</th>
         </thead>
         <tbody>
 
@@ -16,7 +18,7 @@
             <tr *ngFor="let list of playlists" id="visual">
                 <td>{{list.name}}</td>
                 <td>{{list.id}}</td>
-                <td>{{list.total}}</td>
+                <td>{{list.tracks.total}}</td>
             </tr>
             <tr>
                 <td>hi im an id</td>
@@ -26,7 +28,7 @@
     </table>
 </div>
 
-<div class="song-table">
+<!-- <div class="song-table">
         <table>
             <thead>
                 <th width="300px">Song Name</th>
@@ -38,11 +40,14 @@
                 <td>song stuff the beeps and the boops</td>
                 </tr>
             </tbody>
-        </table>
-</div>
-=======
-<div><button onclick="getUserDetails()">yes</button></div>
-<div class="email">
+        </table>-->
+</div> 
+
+<!-- <body onload="getUserDetails()">
+    <div class="id">
     <h1></h1>
-</div>
+    </div>
+</body> -->
+
+
 

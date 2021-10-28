@@ -14,7 +14,7 @@
             <td>{{user.userID}}</td>
             <td>{{user.email}}</td>
             <td>{{user.account}}</td>
-            <td (click)="goToUser(user.userID)"><button class="tbutton">View Playlist</button></td>
+            <td (click)="goToUser(user.userID ?? 0)"><button class="tbutton">View Playlist</button></td>
         </tr>
     </tbody>
 </table>
