@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CacApiService } from '../service/cac-api.service';
+import { User } from '../models/User';
 
 @Component({
   selector: 'app-nav-bar',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private cacService: CacApiService) { }
 
   ngOnInit(): void {
     
