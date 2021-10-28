@@ -1,6 +1,7 @@
 .header-leaderboard {
     color: white;
     margin-left: 5%;
+    margin-top: 3%;
     font-size: 45px;
 }
 .board-position { 
@@ -9,9 +10,12 @@
 }
 
 .welcome-position {
-    text-align: center;
-    margin-left: 45%;
+    text-align: left;
+    margin-left: 65%;
     margin-top: -5%;
-    font-size: 32px;
-    color:white;
+    font-size: 125px;
+    color:rgb(193, 33, 199);
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    text-shadow: 8px 8px black;
 }

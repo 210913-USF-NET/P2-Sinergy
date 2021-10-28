@@ -1,6 +1,12 @@
 
-
-
+const AUTHORIZE = "https://accounts.spotify.com/authorize";
+const TOKEN = "https://accounts.spotify.com/api/token";
+const PLAYLISTS = "https://api.spotify.com/v1/me/playlists";
+const DEVICES = "https://api.spotify.com/v1/me/player/devices";
+const PLAY = "https://api.spotify.com/v1/me/player/play";
+const PAUSE = "https://api.spotify.com/v1/me/player/pause";
+const NEXT = "https://api.spotify.com/v1/me/player/next";
+const TRACKS = "https://api.spotify.com/v1/playlists/{{PlaylistId}}/tracks";
 
   // Helper Function to Extract Access Token for URL
 
@@ -22,8 +28,6 @@ function fetchAccessToken(){
 }
 
 function callAuthorizationApi(body){
-    let client_id = '4f62261bf9ec402d867aa525f1284ba8';
-    let client_secret = '90d7056a358e47b184c225d9349d7b3d';
     let xhr = new XMLHttpRequest();
     xhr.open("POST", TOKEN, true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -72,6 +76,11 @@ function readAuthToken(){
         console.log(authCode);
         sessionStorage.authCode = authCode;
         console.log("session set to "+ sessionStorage.authCode);
+        if(sessionStorage.authCode != null && sessionStorage.authCode != "" && sessionStorage.authCode != undefined && sessionStorage.authCode != 'undefined'){
+            if(sessionStorage.refresh_token == null || sessionStorage.refresh_token == "" || sessionStorage.refresh_token == undefined || sessionStorage.refresh_token == 'undefined'){
+                fetchAccessToken();
+            }
+        }
     
 }
 function loginSpotify(){
@@ -129,13 +138,11 @@ function getUserDetails(){
 function handleResponse(){
     if ( this.status == 200 ){
         var data = JSON.parse(this.responseText);
-
         let div = document.querySelector('.id');
         let captionEl = document.createElement('caption');
         let idNode = document.createTextNode(data.id);
         captionEl.appendChild(idNode);
         div.appendChild(captionEl);
-
         console.log(data);
         
     }
@@ -146,12 +153,18 @@ function handleResponse(){
 }
 
 function fetchTracks(){
-    fetchAccessToken();
     //let playlist_id = document.getElementById("playlists").value;
     //if ( playlist_id.length > 0 ){
         url = TRACKS.replace("{{PlaylistId}}", "37i9dQZF1DZ06evO1F4G5T");
         callApi( "GET", url, null, handleTracksResponse );
     //}
+}
+
+function removeAllItems( elementId ){
+    let node = document.getElementById(elementId);
+    while (node.firstChild) {
+        node.removeChild(node.firstChild);
+    }
 }
 
 function handleTracksResponse(){
