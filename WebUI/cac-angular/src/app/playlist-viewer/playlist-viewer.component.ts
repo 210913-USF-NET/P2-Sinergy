@@ -20,7 +20,7 @@ export class PlaylistViewerComponent implements OnInit {
 
   constructor(private currentRoute: ActivatedRoute, private cacService: CacApiService) { }
 
-  id = '37i9dQZF1DZ06evO1F4G5T';
+  id = sessionStorage.playlistURI;
   Songs: Songs = {
     PlaylistID: 0,
     URL:'',
@@ -33,16 +33,17 @@ export class PlaylistViewerComponent implements OnInit {
   ngOnInit(): void {
     this.currentRoute.params.subscribe(params => {
       this.id = params['id'];
-      this.cacService.getSinglePlaylist().then(result => {
+      console.log(this.id);
+      this.cacService.getSinglePlaylist(this.id).then(result => {
         this.Songs = result;
       });
     });
 
-      this.cacService.getSinglePlaylist().then(result =>{
+      this.cacService.getSinglePlaylist(this.id).then(result =>{
         this.songs = result.items;
-        console.log(result)
-        console.log(this.songs[15].track.name)
-        console.log(this.songs[15].track.artists[0].name)
+        this.artist = result.items.track;
+        console.log(this.songs[15])
+       
         
   });
   

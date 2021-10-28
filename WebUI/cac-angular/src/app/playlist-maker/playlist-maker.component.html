@@ -7,7 +7,10 @@
     <h5 class="my-text">Please use the following steps to create your Cacophany Playlist</h5>
     <ol class="centerList">
         <li>
-            Please enter the name of the playlist
+            Please enter the name of the playlist.
+        </li>
+        <li>
+            Please enter the number of songs you would like on your playlist.
         </li>
         <li>
             Please enter the start and end dates the playlist should span.
@@ -20,19 +23,23 @@
     <br>
 
     <div>
-        <form action="/action_page.php">
+
+        <form action="/action_page.php" onsubmit="InfoSubmit()">
 
             <label for="playlistName">Playlist Name:</label><br>
-            <input type="text" id="playlistName" name="playlistName" placeholder="e.g. Living in the '80s" value=""><br><br>
+            <input type="text" id="playlistName" name="playlistName" placeholder="e.g. Living in the '80s"><br><br>
+
+            <label for="listLength">Playlist Length:</label><br>
+            <input type="number" min="1" max="100" id="listLength" name="listLength" placeholder="10"><br><br>
 
             <label for="startDate">Start Date:</label><br>
-            <input type="date" id="startDate" name="Start Date" value=""><br><br>
+            <input type="date" id="startDate" name="Start Date"><br><br>
 
             <label for="endDate">End Date:</label><br>
-            <input type="date" id="endDate" name="End Date" value=""><br><br>
+            <input type="date" id="endDate" name="End Date"><br><br>
 
             <label for="lastFmName">Last.Fm Username:</label><br>
-            <input type="text" id="lastFmName" name="LastFmName" placeholder="e.g. siavash1996" value=""><br><br>
+            <input type="text" id="lastFmName" name="LastFmName" placeholder="e.g. siavash1996"><br><br>
             <br>
 
             <input class="button" type="submit" value="Submit">
@@ -42,22 +49,19 @@
         <br>
     </div>
 </div>
+
 <script>
-    document.getElementById(playlistName).value;
-    document.getElementById(startDate).value;
-    document.getElementById(endDate).value;
-    document.getElementById(lastFmName).value;
-    console.log('Start:' + startDate);
-    fetch('https://ws.audioscrobbler.com/2.0/?method=tag.getweeklychartlist&tag=rank&api_key=bd9a22a5a89705767018c3e16cd85172&format=json', {
-        method: 'GET',
-        body: {
-            from:startDate,
-            to:endDate
-        }
-    }).then(res => res).then(data => console.log(data))
+    function InfoSubmit(playlistName, listLength, startDate, endDate, lastFmName) {
+        document.getElementById(playlistName).value;
+        document.getElementById(listLength).value;
+        document.getElementById(startDate).value;
+        document.getElementById(endDate).value;
+        document.getElementById(lastFmName).value;
+        console.log('Start:' + startDate);
+
+        return playlistName, listLength, startDate, endDate, lastFmName;
+    }
 </script>
-
-
 
 <table>
     <thead>
@@ -68,10 +72,10 @@
     </thead>
     <tbody>
         <tr *ngFor="let item of song">
-            <td>{{item.artist}}</td>
+            <td>{{item.artist['#text']}}</td>
             <td>{{item.name}}</td>
             <td>{{item.playcount}}</td>
-            <td>{{item.rank}}</td>
+            <td>{{item['@attr'].rank}}</td>
         </tr>
     </tbody>
 </table>
