@@ -40,3 +40,17 @@
         <br>
     </div>
 </div>
+<script>
+    document.getElementById(playlistName).value;
+    document.getElementById(startDate).value;
+    document.getElementById(endDate).value;
+    document.getElementById(lastFmName).value;
+    console.log('Start:' + startDate);
+    fetch('https://ws.audioscrobbler.com/2.0/?method=tag.getweeklychartlist&tag=rank&api_key=bd9a22a5a89705767018c3e16cd85172&format=json', {
+        method: 'GET',
+        body: {
+            from:startDate,
+            to:endDate
+        }
+    }).then(res => res).then(data => console.log(data))
+</script>
