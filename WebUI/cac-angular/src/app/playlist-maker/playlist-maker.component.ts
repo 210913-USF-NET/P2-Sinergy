@@ -20,13 +20,13 @@ export class PlaylistMakerComponent implements OnInit {
 
     
  
-  song: song[] = [];
+  song: any;
   ngOnInit(): void {
     
-    this.cacService.getTopTracks('Rhormus', '0', '2635456994').then(result =>{
+    this.cacService.getTopTracks('Bluefalcon407', '0', '2635456994').then(result =>{
       this.song = result.track;
       console.log(result)
-      console.log(this.song[4].artist.text)
+      console.log(result.weeklytrackchart.track[4].artist['#text'])
     })
   
 }

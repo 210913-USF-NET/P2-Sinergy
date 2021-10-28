@@ -17,6 +17,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { CommonModule } from '@angular/common';
 import { EmbedPlaylistComponent } from './embed-playlist/embed-playlist.component';
 import { FormsModule } from '@angular/forms';
+import { PlaylistViewerComponent } from './playlist-viewer/playlist-viewer.component';
 
 
 
@@ -34,6 +35,7 @@ import { FormsModule } from '@angular/forms';
     MoreChartsComponent,
     HomepageComponent,
     EmbedPlaylistComponent,
+    PlaylistViewerComponent
     
   ],
   imports: [
