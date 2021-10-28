@@ -11,8 +11,8 @@ import { HomepageComponent } from './homepage/homepage.component';
 const routes: Routes = [
   {path: 'home', component: HomepageComponent },
   {path: 'login', component: LoginComponent },
-  {path: 'users/:id', component: UserFormComponent},
-  {path: 'users', component: UserListComponent},
+  {path: 'user/:id', component: UserFormComponent},
+  {path: 'user', component: UserListComponent},
   {path: 'playlist-maker', component: PlaylistMakerComponent},
   {path: 'more-charts', component: MoreChartsComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'}
