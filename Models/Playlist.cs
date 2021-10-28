@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Models
 {
@@ -17,10 +18,12 @@ namespace Models
 
         public string PlaylistName {get; set;}
         public int UserID { get; set; }
-        public string user { get; set; }
+        public string Username { get; set; }
         public int SongCount { get; set; }
-        public int Timeframe { get; set; }
+        public int StartDate { get; set; }
+        public int EndDate { get; set; }
         public DateTime Date { get; set; }
-        
-    }
+        public List<Songs> songList { get; set; }
+
+}
 }
