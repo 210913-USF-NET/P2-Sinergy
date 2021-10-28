@@ -13,7 +13,6 @@ const APIKEY = "bd9a22a5a89705767018c3e16cd85172"
 
 
 function uriSelector(){
-    console.log("please work");
     document.getElementById('webplayer').src = sessionStorage.playlistURI;
 }
 
