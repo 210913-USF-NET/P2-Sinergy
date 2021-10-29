@@ -6,6 +6,7 @@ import { CacApiService } from '../service/cac-api.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { song } from '../models/LastFM Models/LastFMSong'
+import { playlistMaker } from '../models/LastFM Models/LastFMWeeklytrackchart';
 
 @Component({
   selector: 'app-playlist-maker',
@@ -37,5 +38,37 @@ export class PlaylistMakerComponent implements OnInit {
     })
   
 }
+
+newPlay: playlistMaker = new playlistMaker();
+
+
+InfoSubmit() {
+
+  console.log(this.newPlay.user);
+  console.log(this.newPlay.from);
+
+  let listName = this.newPlay.playlistName;
+  let listLength = this.newPlay.listLength;
+  let to = this.newPlay.to;
+  let from = this.newPlay.from;
+  let user = this.newPlay.user;
+
+  
+  to = ((new Date(to).getTime() / 1000).toFixed(0)).toString();
+  from = ((new Date(from).getTime() / 1000).toFixed(0)).toString();
+  console.log(listName);
+  console.log(listLength);
+  console.log(to);
+  console.log(from);
+  console.log(user);
+  //let results = await axios.get(`http://ws.audioscrobbler.com/2.0/?method=user.getweeklytrackchart&user=${user}&api_key=bd9a22a5a89705767018c3e16cd85172&from=${from}&to=${to}&format=json`)
+  // console.log(results); 
+}
+// let searchBtn = document.getElementByID('searchBtn').addEventListener('click',search());
+
+search() {
+  console.log(document.querySelector('.playlistName'))
+}
+
 
 }
