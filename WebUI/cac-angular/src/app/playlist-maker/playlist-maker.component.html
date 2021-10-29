@@ -14,7 +14,8 @@
     <h1 class="my-text" style="font-size: 45px; text-shadow: 3px 3px black;">Welcome to the Playlist Maker</h1>
     <br>
 
-    <button onclick="playlistCreator('testing?', ['we will rock you Queen', 'wrecking ball miley cyrus'])">testbutton</button>
+    <button onclick="playlistCreator('testing?', )">Make Playlist</button>
+    <button onclick="addSongCreator(['we will rock you Queen', 'wrecking ball miley cyrus'])">Add Songs</button>
     <h5 class="my-text">Please use the following steps to create your Cacophany Playlist</h5>
     <ol class="centerList">
         <li>
@@ -30,13 +31,10 @@
             Please enter your Last.fm username.
         </li>
     </ol>
-
     <br>
 
     <div>
-
         <!-- <form action="/action_page.php" onsubmit="InfoSubmit()"> -->
-
             <label for="playlistName">Playlist Name:</label><br>
             <input type="text" id="playlistName" name="playlistName" placeholder="e.g. Living in the '80s" [(ngModel)]="newPlay.playlistName"><br><br>
 
@@ -54,7 +52,6 @@
             <br>
 
             <button class="button"  value="Submit" (click)="InfoSubmit()"></button>
-       
         </div>
     </div>
 
@@ -88,7 +85,7 @@
     }
 </script> -->
 
-<script src="./ajax.js"></script>
+<!-- <script src="./ajax.js"></script> -->
 <!-- <script>
     let getPlaylist = function() {
         let lastFmApiUrl = "http://ws.audioscrobbler.com/2.0/?method=user.getweeklytrackchart&user=${user}&api_key=bd9a22a5a89705767018c3e16cd85172&from=${from}&to=${to}&format=json";
