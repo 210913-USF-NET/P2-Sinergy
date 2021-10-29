@@ -11,6 +11,7 @@ import { artists } from '../models/spotifyArtist';
 import { CommonModule } from '@angular/common';
 
 
+
 @Component({
   selector: 'app-playlist-viewer',
   templateUrl: './playlist-viewer.component.html',
@@ -38,13 +39,10 @@ export class PlaylistViewerComponent implements OnInit {
         this.Songs = result;
       });
     });
-
-      this.cacService.getSinglePlaylist(this.id).then(result =>{
-        this.songs = result.items;
-        this.artist = result.items.track;
-        console.log(this.songs[15].track.artists[0].name);
-        
-  });
-  
-}
+    this.cacService.getSinglePlaylist(this.id).then(result =>{
+      this.songs = result.items;
+      this.artist = result.items.track;
+      console.log(this.songs[15].track.artists[0].name);
+    });
+  }
 }

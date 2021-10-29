@@ -1,9 +1,11 @@
 .header-leaderboard {
     color: white;
-    margin-top: 3%;
-    font-size: 45px;
-    margin-left: 37%;
+    margin-top: 1%;
+    font-size: 60px;
+    margin-left: auto;
     margin-right: auto;
+    text-align: center;
+    text-shadow: 3px 3px black;
 }
 .board-position { 
     margin-top: 2%;

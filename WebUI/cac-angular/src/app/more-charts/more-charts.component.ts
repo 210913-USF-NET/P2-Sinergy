@@ -127,14 +127,6 @@ export class MoreChartsComponent implements AfterViewInit {
               color: "white",
             }
           },
-          title: {
-            display: true,
-            text: "Artist Breakdown in Playlist",
-            color: "white",
-            font: {
-              size: 35
-            }
-          },
         }
       }
     });
