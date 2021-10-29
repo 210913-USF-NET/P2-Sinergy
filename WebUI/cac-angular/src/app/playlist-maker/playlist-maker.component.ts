@@ -25,11 +25,8 @@ export class PlaylistMakerComponent implements OnInit {
   ngOnInit(): void {}
 
   newPlay: playlistMaker = new playlistMaker();
-   
-
 
 InfoSubmit() {
-
   
   let listName = this.newPlay.playlistName;
   let listLength = this.newPlay.listLength;
