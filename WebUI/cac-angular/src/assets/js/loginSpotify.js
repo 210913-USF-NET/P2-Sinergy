@@ -179,14 +179,13 @@ function getUserDetails(){
     callApi( "GET", PROFILE, null, handleResponse );
 }
 
+function getPlaylists(){
+    callApi( "GET", PLAYLISTS, null, handleResponse );
+}
+
 function handleResponse(){
     if ( this.status == 200 ){
         var data = JSON.parse(this.responseText);
-        let div = document.querySelector('.id');
-        let captionEl = document.createElement('caption');
-        let idNode = document.createTextNode(data.id);
-        captionEl.appendChild(idNode);
-        div.appendChild(captionEl);
         console.log(data);
         
     }
