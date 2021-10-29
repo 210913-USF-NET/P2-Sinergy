@@ -39,10 +39,10 @@ export class PlaylistViewerComponent implements OnInit {
       });
     });
 
-      this.cacService.getSinglePlaylist(this.id).then(result =>{
+      this.cacService.getSinglePlaylist('67qsE5NQAgsLAPOb5OVxdo').then(result =>{
         this.songs = result.items;
         this.artist = result.items.track;
-        console.log(this.songs[15])
+        console.log(this.songs[15].track.artists[0].name);
         
   });
   

@@ -196,7 +196,7 @@ function handleUserId(){
 }
 
 function getPlaylists(){
-    callApi( "GET", PLAYLISTS, null, handleResponse );
+    callApi( "GET", PLAYLISTS, null, handlePlaylistsResponse );
 }
 
 function handleResponse(){
@@ -209,6 +209,24 @@ function handleResponse(){
         console.log(this.responseText);
         alert(this.responseText);
     }
+}
+
+function handlePlaylistsResponse(){
+    if ( this.status == 200 ){
+        var data = JSON.parse(this.responseText);
+        console.log(this.status);
+        removeAllItems( "playlists" );
+        data.items.forEach(item => addPlaylist(item));
+        document.getElementById("playlists").value=currentPlaylist;
+    }
+}
+
+function addPlaylist(item){
+    let node = document.createElement("option");
+    node.value = item.id;
+    node.innerHTML = item.name + " (" + item.tracks.total + ")";
+    console.log(item);
+    document.getElementById("playlists").appendChild(node); 
 }
 
 function fetchTracks(){

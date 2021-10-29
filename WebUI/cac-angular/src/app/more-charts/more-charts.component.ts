@@ -2,6 +2,9 @@ import { Component, AfterViewInit, ElementRef } from '@angular/core';
 import Chart from 'chart.js/auto'
 import { CacApiService } from '../service/cac-api.service';
 import { playlist } from '../models/spotifyPlaylist';
+import { songs } from '../models/spotifySongs';
+import { artists } from '../models/spotifyArtist';
+import { Variable } from '@angular/compiler/src/render3/r3_ast';
 
 @Component({
   selector: 'app-more-charts',
@@ -9,11 +12,60 @@ import { playlist } from '../models/spotifyPlaylist';
   styleUrls: ['./more-charts.component.css']
 })
 export class MoreChartsComponent implements AfterViewInit {
+
   myChart: any;
   myChartTwo: any;
   constructor(private elementRef: ElementRef, private cacService: CacApiService) { }
-  playlists: playlist[] = [];
-  ngAfterViewInit() { //app-more-charts
+  songs: songs[] = [];
+  artist: artists[] = [];
+  test: string;
+  numbers = new Array();
+  name: any;
+  count: any;
+  data: any;
+  map = new Map();
+  
+  ngAfterViewInit() {
+    
+    this.cacService.getSinglePlaylist('67qsE5NQAgsLAPOb5OVxdo').then(result =>{
+      this.songs = result.items
+      console.log(result)
+      for(var i = 0; i<result.items.length; i++)
+      { 
+        this.test = result.items[i].track.artists[0].name;
+        this.numbers.push(result.items[i].track.artists[0].name);
+        // console.log(this.test)
+        // console.log(this.numbers);
+
+
+
+
+      } 
+        for(var n = 0; n< this.numbers.length; n++)
+          {
+            this.data = this.numbers[n];
+            this.map[this.data]=(this.map[this.data] || 0) + 1;
+            console.log(this.map);
+          }
+        //   for (var key in this.map) {
+        //     if (this.map.hasOwnProperty(key)) {
+        //         // console.log( key);
+        //         // console.log( this.map[key]);
+        //         this.name = key;
+        //          this.count = this.map[key]
+
+        //     var keys = Array.from(this.map.keys());
+        //     var values = Array.from(this.map.values());
+        //       console.log(keys);
+        //       console.log(values)
+        //     }
+        // }
+              
+    });
+    
+
+
+    //app-more-charts
     let htmlRef = this.elementRef.nativeElement.querySelector('#app-more-charts');
     this.myChart = new Chart(htmlRef, {
       type: 'doughnut',
@@ -21,7 +73,7 @@ export class MoreChartsComponent implements AfterViewInit {
         labels: ['Apples', 'Blueberries', 'Pineapples', 'Watermelons', 'Grapes', 'Philip'],
         datasets: [{
           label: 'Best Fruit',
-          data: [21, 6, 15, 10, 21, 9],
+          data: [9,8,7,4],
           backgroundColor: [
             'rgb(255, 99, 132, 0.2)',
             'rgb(54, 162, 235, 0.2)',
@@ -102,10 +154,6 @@ export class MoreChartsComponent implements AfterViewInit {
         }
       }
     });
-      this.cacService.getUserPlaylists().then(result => {
-        console.log(result)
-        this.playlists = result.items;
-      })
   }
 }
 
