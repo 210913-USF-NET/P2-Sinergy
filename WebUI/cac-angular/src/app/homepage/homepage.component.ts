@@ -46,4 +46,9 @@ export class HomepageComponent implements OnInit {
     //navigate by absolute path
     this.router.navigateByUrl(`playlist/${playlistURI}`);
   }
+  goToMoreCharts(playlistURI: string): void
+  {
+    //navigate by absolute path
+    this.router.navigateByUrl(`more-charts/${playlistURI}`);
+  }
 }

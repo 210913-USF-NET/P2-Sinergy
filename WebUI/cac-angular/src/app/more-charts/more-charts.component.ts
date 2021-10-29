@@ -40,7 +40,11 @@ export class MoreChartsComponent implements AfterViewInit {
   
   ngAfterViewInit() {
     
-    this.cacService.getSinglePlaylist('37i9dQZF1EMccjinW5ldBK').then(result =>{
+    var url = window.location.href;
+    
+    url= url.slice(34, 100);
+    console.log(url);
+    this.cacService.getSinglePlaylist(url).then(result =>{
       this.songs = result.items
       console.log(result)
       for(var i = 0; i<result.items.length; i++)
