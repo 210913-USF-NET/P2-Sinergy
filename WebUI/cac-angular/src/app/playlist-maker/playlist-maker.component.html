@@ -1,3 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="./playlist-maker.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
 
 <div class="position">
     <br>
@@ -45,12 +55,26 @@
             <br>
 
             <button class="button"  value="Submit" (click)="InfoSubmit()"></button>
-        <!-- </form> -->
-        <br>
-        <br>
-        <br>
+       
+        </div>
     </div>
-</div>
+
+    <table>
+        <thead>
+        <th>Artist Name</th>
+        <th>Song Name</th>
+        <th>Play Count</th>
+        <th>Rank</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of song">
+                <td>{{item.artist['#text']}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.playcount}}</td>
+                <td>{{item['@attr'].rank}}</td>
+            </tr>
+        </tbody>
+    </table>
 
 <!-- <script>
     function InfoSubmit(playlistName, listLength, from, to, user) {
@@ -65,19 +89,36 @@
     }
 </script> -->
 
-<table>
-    <thead>
-    <th>Artist Name</th>
-    <th>Song Name</th>
-    <th>Play Count</th>
-    <th>Rank</th>
-    </thead>
-    <tbody>
-        <tr *ngFor="let item of song">
-            <td>{{item.artist['#text']}}</td>
-            <td>{{item.name}}</td>
-            <td>{{item.playcount}}</td>
-            <td>{{item['@attr'].rank}}</td>
-        </tr>
-    </tbody>
-</table>
+<script src="./ajax.js"></script>
+<!-- <script>
+    let getPlaylist = function() {
+        let lastFmApiUrl = "http://ws.audioscrobbler.com/2.0/?method=user.getweeklytrackchart&user=${user}&api_key=bd9a22a5a89705767018c3e16cd85172&from=${from}&to=${to}&format=json";
+        let lastFmQuery = document.getElementById("lastFmQuery").value;
+    
+        fetch(lastFmApiUrl + lastFmQuery).then((res) => res.json()).then(
+            (lastFmArr) => {
+                let lastPlaylist = lastFmArr[0];
+    
+                let playTag = document.querySelector('.lastPlaylist').setAttribute('src');
+    
+                //find the containing div
+                let div = document.querySelector('.lastPlaylist');
+    
+                //first, remove all pre-existing caption element
+                document.querySelectorAll('.digimon caption').forEach((el) => el.remove());
+                
+                // //create new caption element
+                // let captionEl = document.createElement('caption');
+                // //create a text node with the name
+                let lastFmNode = document.createTextNode(lastPlaylist.user, lastPlaylist.to, lastPlaylist.from);
+                //append the node to the caption element
+                // captionEl.appendChild(lastFmNode);
+                // //now append the caption element to the div
+                // div.appendChild(captionEl);
+        });
+    }
+
+</script> -->
+
+
+

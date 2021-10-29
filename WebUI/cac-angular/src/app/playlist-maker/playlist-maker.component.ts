@@ -44,9 +44,6 @@ newPlay: playlistMaker = new playlistMaker();
 
 InfoSubmit() {
 
-  console.log(this.newPlay.user);
-  console.log(this.newPlay.from);
-
   let listName = this.newPlay.playlistName;
   let listLength = this.newPlay.listLength;
   let to = this.newPlay.to;
@@ -69,6 +66,4 @@ InfoSubmit() {
 search() {
   console.log(document.querySelector('.playlistName'))
 }
-
-
 }
