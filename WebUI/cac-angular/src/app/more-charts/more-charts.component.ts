@@ -1,11 +1,19 @@
 import { Component, AfterViewInit, ElementRef } from '@angular/core';
-import Chart from 'chart.js/auto'
+import Chart from 'chart.js/auto';
 import { CacApiService } from '../service/cac-api.service';
 import { playlist } from '../models/spotifyPlaylist';
 import { songs } from '../models/spotifySongs';
 import { artists } from '../models/spotifyArtist';
 import { Variable } from '@angular/compiler/src/render3/r3_ast';
 import { keyframes } from '@angular/animations';
+import { Songs } from '../models/Song';
+import { Playlist } from '../models/Playlist';
+import { track } from '../models/playlistTrack';
+import { CommonModule } from '@angular/common';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { User } from '../models/User';
+import { user } from '../models/spotifyUser';
+const PROFILE = "https://api.spotify.com/v1/me";
 
 @Component({
   selector: 'app-more-charts',
@@ -14,9 +22,18 @@ import { keyframes } from '@angular/animations';
 })
 export class MoreChartsComponent implements AfterViewInit {
 
+  id = 0;
+  User: User = {
+    userID: 0,
+    email: '',
+    account: '',
+    admin: false
+  };
+  user: user;
+  playlists: playlist[] = [];
+
   myChart: any;
-  myChartTwo: any;
-  constructor(private elementRef: ElementRef, private cacService: CacApiService) { }
+  constructor(private elementRef: ElementRef, private cacService: CacApiService, private currentRoute: ActivatedRoute, private router: Router) { }
   songs: songs[] = [];
   artist: artists[] = [];
   test: string;
@@ -74,10 +91,6 @@ export class MoreChartsComponent implements AfterViewInit {
                     
               console.log(this.keys);
               console.log(this.values)
-              
-    
-    
-
 
     //app-more-charts
     let htmlRef = this.elementRef.nativeElement.querySelector('#app-more-charts');
@@ -85,9 +98,8 @@ export class MoreChartsComponent implements AfterViewInit {
       type: 'doughnut',
       data: {
         labels: this.keys,
-        // labels: ['Apples', 'Blueberries', 'Pineapples', 'Watermelons', 'Grapes', 'Philip'],
         datasets: [{
-          label: 'Best Fruit',
+          label: 'Artist',
           data: this.values,
           // data: [9,8,7,4],
           backgroundColor: [
@@ -117,63 +129,16 @@ export class MoreChartsComponent implements AfterViewInit {
           },
           title: {
             display: true,
-            text: 'Custom Chart Title',
+            text: "Artist Breakdown in Playlist",
             color: "white",
             font: {
-              size: 25
+              size: 35
             }
           },
         }
       }
     });
   });
-
-
-
-    let htmlRefTwo = this.elementRef.nativeElement.querySelector('#app-more-charts_two');
-    this.myChartTwo = new Chart(htmlRefTwo, {
-      type: 'doughnut',
-      data: {
-        labels: ['Apples', 'Blueberries', 'Pineapples', 'Watermelons', 'Grapes', 'Philip'],
-        datasets: [{
-          label: 'Best Fruit',
-          data: [15, 1, 5, 2, 7, 9],
-          backgroundColor: [
-            'rgb(255, 99, 132, 0.2)',
-            'rgb(54, 162, 235, 0.2)',
-            'rgb(255, 206, 86, 0.2)',
-            'rgb(75, 192, 192, 0.2)',
-            'rgb(153, 102, 255, 0.2)',
-            'rgb(05, 128, 128, 0.2)'
-          ],
-          borderColor: [
-            'rgb(255, 99, 132, 1)',
-            'rgb(54, 162, 235, 1)',
-            'rgb(255, 206, 86, 1)',
-            'rgb(75, 192, 192, 1)',
-            'rgb(153, 102, 255, 1)',
-            'rgb(05, 128, 128, 1)'
-          ],
-        }]
-      },
-      options: {
-        plugins: {
-          legend: {
-            labels: {
-              color: "white",
-            }
-          },
-          title: {
-            display: true,
-            text: 'Custom Chart Title 1',
-            color: "white",
-            font: {
-              size: 25
-            }
-          },
-        }
-      }
-    });
   }
 }
 

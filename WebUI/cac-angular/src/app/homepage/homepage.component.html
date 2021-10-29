@@ -8,21 +8,19 @@
             <th>
                 Playlist
             </th>
+            <th style="width: 100px;">
+                Most Likes
+            </th>
         </thead>
         <tbody>
-            <tr>
-                <td>hi</td>
+            <tr *ngFor="let list of playlists">
+                <td class="edit" id="{{list.id}}" onclick="setPlaylistURI(this.id)">{{list.name}}</td>
                 <td>im tired</td>
             </tr>
         </tbody>
     </table>
 </div>
-
-<div class="welcome-position">
-    <p>Create <br>
-        Listen<br>
-        Repeat</p> 
-</div>
+<br>
 <br>
 <br>
 <div>

@@ -17,6 +17,7 @@ const routes: Routes = [
   {path: 'playlist-maker', component: PlaylistMakerComponent},
   {path: 'more-charts', component: MoreChartsComponent},
   {path: 'playlist/:id', component: PlaylistViewerComponent},
+  {path: 'more-charts/:id', component: MoreChartsComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'}
 ];
 
