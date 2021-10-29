@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CacApiService } from '../service/cac-api.service';
 import { User } from '../models/User';
-import { user } from '../models/spotifyUser'
+import { user } from '../models/spotifyUser';
+import { Songs } from '../models/Song';
+import { artists } from '../models/spotifyArtist';
+import { songs } from '../models/spotifySongs';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { playlist } from '../models/spotifyPlaylist';
 const PROFILE = "https://api.spotify.com/v1/me";
@@ -24,16 +27,21 @@ export class HomepageComponent implements OnInit {
   };
   user: user;
   playlists: playlist[] = [];
-
+  Songs: Songs = {
+    PlaylistID: 0,
+    URL:'',
+    SongsID: 0,
+    InformationID: 0,
+  };
+  songs: songs[] = [];
+  artist: artists[] = [];
 
 
   ngOnInit(): void {
-    this.cacService.getUserPlaylists().then(result => {
-      console.log(result)
-      this.playlists = result.items;
-      console.log(this.playlists[0].tracks.total)
+    this.cacService.getSinglePlaylist("4vKsBR0At6QDqTApovWDtw").then(result =>{
+      this.songs = result.items;
+      this.artist = result.items.track;
     });
-
     this.cacService.getUserDetails().then(result => {
       console.log(result)
       console.log(result.display_name)

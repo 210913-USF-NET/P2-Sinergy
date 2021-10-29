@@ -1,21 +1,15 @@
 <h1 class="header-leaderboard" >Top Playlist of the Week</h1>
 <div class="board-position" style="padding: 0 0 70px 0; position:absolute;"> <!--replace with leaderboard table-->
     <table class="table">
-        <thead>
-            <th style="width: 100px;">
-                No.
-            </th>
-            <th>
-                Playlist
-            </th>
-            <th style="width: 100px;">
-                Most Likes
-            </th>
+        <thead> 
+            <th width="10px"> No.</th>
+            <th width="100px">Name</th>
+            <th width="100px">Song</th>
         </thead>
         <tbody>
-            <tr *ngFor="let list of playlists">
-                <td class="edit" id="{{list.id}}" onclick="setPlaylistURI(this.id)">{{list.name}}</td>
-                <td>im tired</td>
+            <tr *ngFor="let name of songs">
+                <td>{{name.track.artists[0].name}}</td>
+                <td>{{name.track.name}}</td>
             </tr>
         </tbody>
     </table>
