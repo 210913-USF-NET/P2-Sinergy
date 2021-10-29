@@ -5,6 +5,7 @@ import { playlist } from '../models/spotifyPlaylist';
 import { songs } from '../models/spotifySongs';
 import { artists } from '../models/spotifyArtist';
 import { Variable } from '@angular/compiler/src/render3/r3_ast';
+import { keyframes } from '@angular/animations';
 
 @Component({
   selector: 'app-more-charts',
@@ -24,6 +25,8 @@ export class MoreChartsComponent implements AfterViewInit {
   count: any;
   data: any;
   map = new Map();
+  keys: any[];
+  values: any[];
   
   ngAfterViewInit() {
     
@@ -36,32 +39,43 @@ export class MoreChartsComponent implements AfterViewInit {
         this.numbers.push(result.items[i].track.artists[0].name);
         // console.log(this.test)
         // console.log(this.numbers);
-
-
-
-
       } 
-        for(var n = 0; n< this.numbers.length; n++)
-          {
-            this.data = this.numbers[n];
-            this.map[this.data]=(this.map[this.data] || 0) + 1;
-            console.log(this.map);
-          }
-        //   for (var key in this.map) {
-        //     if (this.map.hasOwnProperty(key)) {
-        //         // console.log( key);
-        //         // console.log( this.map[key]);
-        //         this.name = key;
-        //          this.count = this.map[key]
+        // for(var n = 0; n< this.numbers.length; n++)
+        //   {
+        //     this.data = this.numbers[n];
+        //     this.map[this.data]=(this.map[this.data] || 0) + 1;
+        //     // console.log(this.map);
+        //   }
+          
+          // console.log(this.map['Birdy'])
+           //     console.log(this.map.keys())
+          //  for (var n = 0; n < this.numbers.length; n++)
+          //  {
+          //    var name = this.numbers[n];
+          //    var count = this.map[name] ?? 0;
+          //    console.log('adding '+ name + ' with count '+ count)
+          //    this.map.set(name, count + 1)
+          //  }
 
-        //     var keys = Array.from(this.map.keys());
-        //     var values = Array.from(this.map.values());
-        //       console.log(keys);
-        //       console.log(values)
-        //     }
-        // }
+          for (var n = 0; n < this.numbers.length; n++)
+              {
+                var name = this.numbers[n];
+                let count = 1;
+                if (this.map.has(name))
+                {
+                  count += this.map.get(name);
+                }
+                this.map.set(name, count)
+                // console.log('adding '+ name + ' with count '+ count)
+              }
+
+            this.values = Array.from(this.map.values());
+            this.keys = Array.from(this.map.keys());
+                    
+              console.log(this.keys);
+              console.log(this.values)
               
-    });
+    
     
 
 
@@ -70,10 +84,12 @@ export class MoreChartsComponent implements AfterViewInit {
     this.myChart = new Chart(htmlRef, {
       type: 'doughnut',
       data: {
-        labels: ['Apples', 'Blueberries', 'Pineapples', 'Watermelons', 'Grapes', 'Philip'],
+        labels: this.keys,
+        // labels: ['Apples', 'Blueberries', 'Pineapples', 'Watermelons', 'Grapes', 'Philip'],
         datasets: [{
           label: 'Best Fruit',
-          data: [9,8,7,4],
+          data: this.values,
+          // data: [9,8,7,4],
           backgroundColor: [
             'rgb(255, 99, 132, 0.2)',
             'rgb(54, 162, 235, 0.2)',
@@ -110,6 +126,10 @@ export class MoreChartsComponent implements AfterViewInit {
         }
       }
     });
+  });
+
+
+
     let htmlRefTwo = this.elementRef.nativeElement.querySelector('#app-more-charts_two');
     this.myChartTwo = new Chart(htmlRefTwo, {
       type: 'doughnut',
