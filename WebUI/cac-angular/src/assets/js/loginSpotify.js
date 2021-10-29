@@ -176,7 +176,23 @@ function callApi(method, url, body, callback){
 }
 
 function getUserDetails(){
-    callApi( "GET", PROFILE, null, handleResponse );
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', "https://api.spotify.com/v1/me", true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.setRequestHeader('Authorization', 'Bearer '+sessionStorage.authCode);
+    xhr.send();
+    xhr.onload=handleUserId;
+}
+function handleUserId(){
+    if ( this.status == 200 ){
+        var data = JSON.parse(this.responseText);
+        console.log(data.id);
+        return data.id;
+    }
+    else {
+        console.log(this.responseText);
+        alert(this.responseText);
+    }
 }
 
 function getPlaylists(){
@@ -228,6 +244,17 @@ function handleTracksResponse(){
 
 
 //LastFM-spotify together
+function playlistCreator(playlistName, songsToAdd){
+    let userId = getUserDetails();
+    let playlistUri=createNewPlaylist(playlistName, userId);
+    let songlist="";
+    songsToAdd.forEach(song => 
+        songlist=+spotifySearch(song)+",");
+    addSongsToPlaylist(songlist, playlistUri);
+
+}
+
+
 function createNewPlaylist(playlistName, userID){
     let xhr = new XMLHttpRequest();
     xhr.open("POST", "https://api.spotify.com/v1/users/"+userID+"/playlists", true);
@@ -251,24 +278,23 @@ function addSongsToPlaylist(songsToAdd, playlistID){
 }
 
 function handlePlaylistResponse(){
-    if ( this.status == 200 ){
+    if ( this.status == 201 ){
         var data = JSON.parse(this.responseText);
-        console.log(data);
-        console.alert("success!  "+data);
+        console.log(data.uri);
+        return data.uri;
     }
     else if ( this.status == 401 ){
         console.log("something wrong happened")
     }
     else {
         console.log(this.responseText);
-        alert(this.responseText);
     }
 }
 
 function spotifySearch(searchTerm){
     let xhr = new XMLHttpRequest();
 
-    xhr.open('GET', "https://api.spotify.com/v1/search?q="+searchTerm+"&type=track%2Cartist&market=US&limit=10&offset=5", true);
+    xhr.open('GET', "https://api.spotify.com/v1/search?q="+searchTerm+"&type=track&offset=0&limit=1", true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.setRequestHeader('Authorization', 'Bearer '+sessionStorage.authCode);
     xhr.send();
@@ -278,7 +304,8 @@ function spotifySearch(searchTerm){
 function handleSearchResponse(){
     if ( this.status == 200 ){
         var data = JSON.parse(this.responseText);
-        console.log(data);
+        console.log(data.tracks.items[0].uri);
+        return data.tracks.items[0].uri;
     }
     else if ( this.status == 401 ){
         console.log("something wrong happened")
