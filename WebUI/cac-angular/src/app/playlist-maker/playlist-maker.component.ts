@@ -18,8 +18,8 @@ export class PlaylistMakerComponent implements OnInit {
 
   constructor(private currentRoute: ActivatedRoute, private cacService: CacApiService, private http: HttpClient, private router: Router) {  }
 
-    
-  
+  artistAndSong: string;
+ 
   song: any;
   ngOnInit(): void {
     
@@ -28,6 +28,12 @@ export class PlaylistMakerComponent implements OnInit {
       console.log(result)
       console.log(result.weeklytrackchart.track[4].artist['#text'])
       console.log(result.weeklytrackchart.track[4]['@attr'].rank)
+      for(var i = 0; i<result.weeklytrackchart.track.length; i++)
+      {
+        this.artistAndSong=result.weeklytrackchart.track[i].artist['#text']+ ' ' + result.weeklytrackchart.track[i].name;
+        console.log(this.artistAndSong);
+      }
+
     })
   
 }
