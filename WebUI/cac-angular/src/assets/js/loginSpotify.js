@@ -264,7 +264,7 @@ function handleTracksResponse(){
 //LastFM-spotify together
 function playlistCreator(newPlaylist){
     getUserDetails();
-    createNewPlaylist("sampletext", sessionStorage.currentUserId);
+    createNewPlaylist(newPlaylist, sessionStorage.currentUserId);
     console.log("sessionUserId is "+sessionStorage.currentUserId)
     
 }
