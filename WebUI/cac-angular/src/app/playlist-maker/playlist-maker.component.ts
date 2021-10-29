@@ -9,7 +9,8 @@ import { song } from '../models/LastFM Models/LastFMSong'
 import { playlistMaker } from '../models/LastFM Models/LastFMWeeklytrackchart';
 
 declare function createNewPlaylist(playlistName: string)
-declare function playlistCreator(songsToAdd: Array<string>)
+declare function spotifySearch(search: string)
+declare function addSongsToPlaylist(songs: string)
 @Component({
   selector: 'app-playlist-maker',
   templateUrl: './playlist-maker.component.html',
@@ -62,14 +63,19 @@ InfoSubmit() {
       console.log(this.artistAndSong);
       songArray.push(this.artistAndSong);
     }
-    
-  playlistCreator(songArray);
-  })
+
+
+      songArray.forEach(song => 
+          spotifySearch(song));
+          console.log(sessionStorage.searchedSong)
+          console.log("Request made with "+ sessionStorage.searchedSong+"at playlist uri" +sessionStorage.newPlaylist)
+      
+      console.log("Request made with "+ sessionStorage.searchedSong+"at playlist uri" +sessionStorage.newPlaylist)
+      sessionStorage.removeItem('searchedSong');
+      
+    })
+    addSongsToPlaylist(sessionStorage.searchedSong);
 
 }
 // let searchBtn = document.getElementByID('searchBtn').addEventListener('click',search());
-
-search() {
-  console.log(document.querySelector('.playlistName'))
-}
 }

@@ -273,7 +273,6 @@ function playlistCreator(songsToAdd){
 }
 
 function addSongCreator(songsToAdd){
-
     songsToAdd.forEach(song => 
         spotifySearch(song));
         console.log(sessionStorage.searchedSong)
