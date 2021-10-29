@@ -14,7 +14,9 @@
             <tr *ngFor="let list of playlists" id="visual">
                 <td class="edit" id="{{list.id}}" onclick="setPlaylistURI(this.id)">{{list.name}}</td>
                 <td>{{list.tracks.total}}</td>
-                <td class="edit" (click)="goToPlaylist(list.id)">View</td>
+                <td class="edit" (click)="goToPlaylist(list.id)">View Songs</td>
+                
+                <td class="edit" (click)="goToMoreCharts(list.id)">View Chart</td>
             </tr>
         </tbody>
     </table>
