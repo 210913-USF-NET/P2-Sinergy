@@ -22,6 +22,7 @@ import { PlaylistViewerComponent } from './playlist-viewer/playlist-viewer.compo
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +36,8 @@ import { PlaylistViewerComponent } from './playlist-viewer/playlist-viewer.compo
     MoreChartsComponent,
     HomepageComponent,
     EmbedPlaylistComponent,
-    PlaylistViewerComponent
+    PlaylistViewerComponent,
+    
     
   ],
   imports: [
