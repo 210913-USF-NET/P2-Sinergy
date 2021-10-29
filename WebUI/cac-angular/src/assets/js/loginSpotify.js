@@ -262,16 +262,20 @@ function handleTracksResponse(){
 
 
 //LastFM-spotify together
-function playlistCreator(newPlaylist, songsToAdd){
+function playlistCreator(newPlaylist){
     getUserDetails();
-    sessionStorage.removeItem('newPlaylist');
-    sessionStorage.newPlaylist=""
     createNewPlaylist("sampletext", sessionStorage.currentUserId);
     console.log("sessionUserId is "+sessionStorage.currentUserId)
+    
+}
+
+function addSongCreator(songsToAdd){
+
     songsToAdd.forEach(song => 
         spotifySearch(song));
         console.log(sessionStorage.searchedSong)
-    addSongsToPlaylist(sessionStorage.searchedSong, sessionStorage.newPlaylist);
+        console.log("Request made with "+ sessionStorage.searchedSong+"at playlist uri" +sessionStorage.newPlaylist)
+    addSongsToPlaylist(sessionStorage.searchedSong);
     console.log("Request made with "+ sessionStorage.searchedSong+"at playlist uri" +sessionStorage.newPlaylist)
     sessionStorage.removeItem('searchedSong');
 
@@ -288,12 +292,12 @@ function createNewPlaylist(playlistName, userID){
     
 }
 
-function addSongsToPlaylist(songsToAdd, playlistID){
+function addSongsToPlaylist(songsToAdd){
     let xhr = new XMLHttpRequest();
     
     //Note that the songsToAdd MUST be in the form "spotify:track:<SongId>", and not just the SongId
 
-    xhr.open("POST", "https://api.spotify.com/v1/playlists/"+playlistID+"/tracks?uris="+songsToAdd, true);
+    xhr.open("POST", "https://api.spotify.com/v1/playlists/"+sessionStorage.newPlaylist+"/tracks?uris="+songsToAdd, true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.setRequestHeader('Authorization', 'Bearer '+sessionStorage.authCode);
     xhr.send();
@@ -301,22 +305,11 @@ function addSongsToPlaylist(songsToAdd, playlistID){
 }
 
 function handlePlaylistResponse(){
-    if ( this.status == 201 ){
-        var data = JSON.parse(this.responseText);
-        console.log(data.uri);
-        if (data.uri!= undefined){
-
-            var  playlistUri = data.uri.slice(17, 40);
-            console.log('sliced data is '+playlistUri)
-            sessionStorage.newPlaylist= playlistUri;
-        }
-    }
-    else if ( this.status == 401 ){
-        console.log("something wrong happened")
-    }
-    else {
-        console.log(this.responseText);
-    }
+    var data = JSON.parse(this.responseText);
+    console.log(data.uri);
+    var  playlistUri = data.uri.slice(17, 40);
+    console.log('sliced data is '+playlistUri)
+    sessionStorage.newPlaylist = playlistUri;
 }
 
 function spotifySearch(searchTerm){

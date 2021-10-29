@@ -16,9 +16,10 @@ import { playlistMaker } from '../models/LastFM Models/LastFMWeeklytrackchart';
 export class PlaylistMakerComponent implements OnInit {
 
   playlist: Songs[];
-  artistAndSong: string;
 
   constructor(private currentRoute: ActivatedRoute, private cacService: CacApiService, private http: HttpClient, private router: Router) {  }
+
+  artistAndSong: string;
 
   song: any;
   ngOnInit(): void {}

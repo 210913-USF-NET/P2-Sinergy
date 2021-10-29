@@ -13,8 +13,6 @@
     <br>
     <h1 class="my-text" style="font-size: 45px; text-shadow: 3px 3px black;">Welcome to the Playlist Maker</h1>
     <br>
-
-    <!--<button onclick="playlistCreator('testing?', ['we will rock you Queen', 'wrecking ball miley cyrus'])">testbutton</button>-->
     <h5 class="my-text">Please use the following steps to create your Cacophany Playlist</h5>
     <ol class="centerList">
         <li>
@@ -36,17 +34,14 @@
             Add songs to your new playlist. 
         </li>
     </ol>
-
     <br>
 
     <div>
-
         <!-- <form action="/action_page.php" onsubmit="InfoSubmit()"> -->
-
             <label for="playlistName">Playlist Name:</label><br>
             <input type="text" id="playlistName" name="playlistName" style="width: 400px;" placeholder=" e.g. Living in the '80s" [(ngModel)]="newPlay.playlistName"><br><br>
 
-            <button class="button">Submit Playlist Name</button><br><br>
+            <button class="button" onclick="playlistCreator('testing?', )">Make Playlist</button><br><br>
 
             <label for="listLength">Playlist Length:</label><br>
             <input type="number" min="1" max="100" id="listLength" name="listLength" placeholder="10" [(ngModel)]="newPlay.listLength"><br><br>
@@ -60,10 +55,9 @@
             <label for="lastFmName">Last.Fm Username:</label><br>
             <input type="text" id="user" name="LastFmName" placeholder="e.g. siavash1996" [(ngModel)]="newPlay.user"><br><br>
             
-            <button class="button">Grab Your Top Hits</button><br><br>
+            <button class="button" onclick="addSongCreator(['we will rock you Queen', 'wrecking ball miley cyrus'])">Add Your Top Hits</button><br><br>
 
-            <button class="button" style="margin-bottom: 20px;">Add Songs to Playlist</button>
-        
+            <button class="button" style="margin-bottom: 20px;" value="Submit" (click)="InfoSubmit()">Add Songs to Playlist</button>
         </div>
     </div>
     <br>
@@ -100,7 +94,7 @@
     }
 </script> -->
 
-<script src="./ajax.js"></script>
+<!-- <script src="./ajax.js"></script> -->
 <!-- <script>
     let getPlaylist = function() {
         let lastFmApiUrl = "http://ws.audioscrobbler.com/2.0/?method=user.getweeklytrackchart&user=${user}&api_key=bd9a22a5a89705767018c3e16cd85172&from=${from}&to=${to}&format=json";

@@ -22,13 +22,6 @@ const PROFILE = "https://api.spotify.com/v1/me";
 })
 export class MoreChartsComponent implements AfterViewInit {
 
-  id = 0;
-  User: User = {
-    userID: 0,
-    email: '',
-    account: '',
-    admin: false
-  };
   user: user;
   playlists: playlist[] = [];
 
