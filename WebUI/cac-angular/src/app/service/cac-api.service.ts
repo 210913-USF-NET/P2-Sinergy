@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { User } from '../models/User';
-import { playlist } from '../models/spotifyPlaylist';
+import { Playlist } from '../models/Playlist';
 const PLAYLIST = "https://api.spotify.com/v1/me/playlists";
 const PROFILE = "https://api.spotify.com/v1/me";
 
@@ -11,6 +11,7 @@ const PROFILE = "https://api.spotify.com/v1/me";
 export class CacApiService {
 
   rootUrl: string = 'https://cacophony.azurewebsites.net/api/User';
+  PlaylistUrl: string = 'https://cacophony.azurewebsites.net/api/Playlist';
 
   constructor(private http: HttpClient) { }
 
@@ -23,6 +24,11 @@ export class CacApiService {
   addUser(User: User): Promise<User>
   {
     return this.http.post<User>(this.rootUrl, User).toPromise();
+  }
+
+  addPlaylist(Playlist: Playlist): Promise<Playlist>
+  {
+    return this.http.post<Playlist>(this.PlaylistUrl, Playlist).toPromise();
   }
 
   getUserById(id: number): Promise<User>
