@@ -26,6 +26,7 @@ export class UserListComponent implements OnInit {
     //navigate by absolute path
     this.router.navigateByUrl(`users/${UserId}`);
   }
+  
 }
 
 
