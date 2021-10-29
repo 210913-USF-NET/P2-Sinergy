@@ -41,7 +41,7 @@
             <label for="playlistName">Playlist Name:</label><br>
             <input type="text" id="playlistName" name="playlistName" style="width: 400px;" placeholder=" e.g. Living in the '80s" [(ngModel)]="newPlay.playlistName"><br>
 
-            <button class="button" style="width: 300px;" value="Submit" onclick="PlaylistCreate('')">Create Empty Playlist</button><br><br>
+            <button class="button" style="width: 300px;" value="Submit" onclick="createNewPlaylist()">Create Empty Playlist</button><br><br>
 
             <label for="listLength">Playlist Length:</label><br>
             <input type="number" min="1" max="100" id="listLength" name="listLength" placeholder="10" [(ngModel)]="newPlay.listLength"><br><br>
@@ -60,7 +60,7 @@
 
             <button class="button" style="margin-bottom: 20px;" value="Submit" (click)="InfoSubmit()">View Your Top Songs</button>
             
-            <button class="button" onclick="addSongCreator()">Add Top Songs to Playlist</button>
+            <button class="button" onclick="playlistCreator()">Add Top Songs to Playlist</button>
             <br>
             <br>
         </div>
