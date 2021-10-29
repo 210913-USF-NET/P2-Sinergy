@@ -1,5 +1,5 @@
-<h1 class="header-leaderboard">Top Playlist of the Week</h1>
-<div class="board-position"> <!--replace with leaderboard table-->
+<h1 class="header-leaderboard" >Top Playlist of the Week</h1>
+<div class="board-position" style="padding: 0 0 70px 0; position:absolute;"> <!--replace with leaderboard table-->
     <table class="table">
         <thead>
             <th style="width: 100px;">
@@ -8,30 +8,15 @@
             <th>
                 Playlist
             </th>
+            <th style="width: 100px;">
+                Most Likes
+            </th>
         </thead>
         <tbody>
-            <tr>
-                <td>hi</td>
+            <tr *ngFor="let list of playlists">
+                <td class="edit" id="{{list.id}}" onclick="setPlaylistURI(this.id)">{{list.name}}</td>
                 <td>im tired</td>
             </tr>
         </tbody>
     </table>
-</div>
-
-<div class="welcome-position">
-    <p>Create <br>
-        Listen<br>
-        Repeat</p> 
-</div>
-<br>
-<br>
-<div>
-    <footer class="bg-light text-center text-lg-start">
-        <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgb(193, 33, 199); margin-bottom: auto;">
-            © 2021 Copyright:
-            <a class="text-dark">Sinergy</a>
-        </div>
-        <!-- Copyright -->
-    </footer>
 </div>

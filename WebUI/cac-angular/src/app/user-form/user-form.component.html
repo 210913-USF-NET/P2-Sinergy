@@ -1,9 +1,8 @@
 <div class="profile">
     <h1>Username: {{user.display_name}}</h1>
-
 </div>
 <br>
-<div class="page">
+<div class="page" style="padding: 0 0 30px 0;">
 <div class="playlist-table">
     <table>
         <thead>
@@ -13,11 +12,10 @@
         </thead>
         <tbody>
             <tr *ngFor="let list of playlists" id="visual">
-                <td id="{{list.id}}" onclick="setPlaylistURI(this.id)">{{list.name}}</td>
+                <td class="edit" id="{{list.id}}" onclick="setPlaylistURI(this.id)">{{list.name}}</td>
                 <td>{{list.tracks.total}}</td>
-                <td class="edit" (click)="goToPlaylist(list.id)">Edit</td>
+                <td class="edit" (click)="goToPlaylist(list.id)">View</td>
             </tr>
-            
         </tbody>
     </table>
 </div>
@@ -27,13 +25,3 @@
 </div>
 <br>
 <br>
-<div>
-    <footer class="bg-light text-center text-lg-start">
-        <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgb(193, 33, 199); margin-bottom: auto;">
-            © 2021 Copyright:
-            <a class="text-dark">Sinergy</a>
-        </div>
-        <!-- Copyright -->
-    </footer>
-</div>

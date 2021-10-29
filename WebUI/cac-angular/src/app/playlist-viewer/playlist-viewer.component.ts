@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CacApiService } from '../service/cac-api.service';
 import { User } from '../models/User';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { playlist } from '../models/spotifyPlaylist';
 import { Songs } from '../models/Song';
 import { Playlist } from '../models/Playlist';
@@ -11,6 +11,7 @@ import { artists } from '../models/spotifyArtist';
 import { CommonModule } from '@angular/common';
 
 
+
 @Component({
   selector: 'app-playlist-viewer',
   templateUrl: './playlist-viewer.component.html',
@@ -18,7 +19,7 @@ import { CommonModule } from '@angular/common';
 })
 export class PlaylistViewerComponent implements OnInit {
 
-  constructor(private currentRoute: ActivatedRoute, private cacService: CacApiService) { }
+  constructor(private currentRoute: ActivatedRoute, private cacService: CacApiService, private router: Router) { }
 
   id = sessionStorage.playlistURI;
   Songs: Songs = {
@@ -38,13 +39,15 @@ export class PlaylistViewerComponent implements OnInit {
         this.Songs = result;
       });
     });
-
-      this.cacService.getSinglePlaylist('67qsE5NQAgsLAPOb5OVxdo').then(result =>{
-        this.songs = result.items;
-        this.artist = result.items.track;
-        console.log(this.songs[15].track.artists[0].name);
-        
-  });
-  
-}
+    this.cacService.getSinglePlaylist(this.id).then(result =>{
+      this.songs = result.items;
+      this.artist = result.items.track;
+      console.log(this.songs[15].track.artists[0].name);
+    });
+  }
+  goToCharts(id: string): void
+  {
+    //navigate by absolute path
+    this.router.navigateByUrl(`more-charts/${id}`);
+  }
 }

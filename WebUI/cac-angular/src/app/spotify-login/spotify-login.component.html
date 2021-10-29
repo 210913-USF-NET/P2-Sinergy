@@ -1,7 +1,7 @@
-<div>
+<div style="padding: 0 0 30px 0;">
     <table style="margin-top: 5%; margin-left: auto; margin-right: auto;">
         <thead>
-            <th style="color:White; font-size: 28px;">
+            <th style="color:White; font-size: 28px; text-shadow: 3px 3px black;;">
                 Connect your Spotify account to make<br> 
                 personal and unique playlist based on <br> 
                 you music listening history.  
@@ -15,7 +15,7 @@
         <tbody>
             <tr>
                 <ng-container>
-                    <button class="button1" type="submit" onclick="fetchAccessToken()">Authorize Spotify</button>
+                    <button class="button1" type="submit" onclick="fetchAccessToken();">Authorize Spotify</button>
                     <br>
                     <br>
                     <button class="button2" type="submit" onclick="clearAuthCode()" (click)="endClick()">End Session</button>
@@ -25,14 +25,3 @@
     </table>
 </div>
 <br>
-<div style="position:relative">
-    <footer class="bg-light text-center text-lg-start" style="margin-top: 11%;">
-        <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgb(193, 33, 199); margin-bottom: auto;">
-            © 2021 Copyright:
-            <a class="text-dark">Sinergy</a>
-        </div>
-        <!-- Copyright -->
-    </footer>
-</div>
-

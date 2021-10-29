@@ -7,19 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
+<body style="padding: 0 0 30px 0;">
 
 <div class="position">
     <br>
     <h1 class="my-text" style="font-size: 45px; text-shadow: 3px 3px black;">Welcome to the Playlist Maker</h1>
     <br>
-
-    <button onclick="playlistCreator('testing?', )">Make Playlist</button>
-    <button onclick="addSongCreator(['we will rock you Queen', 'wrecking ball miley cyrus'])">Add Songs</button>
     <h5 class="my-text">Please use the following steps to create your Cacophany Playlist</h5>
     <ol class="centerList">
         <li>
-            Please enter the name of the playlist.
+            Please enter the name of the playlist and submit the name.
         </li>
         <li>
             Please enter the number of songs you would like on your playlist.
@@ -30,13 +27,21 @@
         <li>
             Please enter your Last.fm username.
         </li>
+        <li>
+            Grab the top songs you picked.
+        </li>
+        <li>
+            Add songs to your new playlist. 
+        </li>
     </ol>
     <br>
 
     <div>
         <!-- <form action="/action_page.php" onsubmit="InfoSubmit()"> -->
             <label for="playlistName">Playlist Name:</label><br>
-            <input type="text" id="playlistName" name="playlistName" placeholder="e.g. Living in the '80s" [(ngModel)]="newPlay.playlistName"><br><br>
+            <input type="text" id="playlistName" name="playlistName" style="width: 400px;" placeholder=" e.g. Living in the '80s" [(ngModel)]="newPlay.playlistName"><br><br>
+
+            <button class="button" onclick="playlistCreator('testing?', )">Make Playlist</button><br><br>
 
             <label for="listLength">Playlist Length:</label><br>
             <input type="number" min="1" max="100" id="listLength" name="listLength" placeholder="10" [(ngModel)]="newPlay.listLength"><br><br>
@@ -49,11 +54,15 @@
 
             <label for="lastFmName">Last.Fm Username:</label><br>
             <input type="text" id="user" name="LastFmName" placeholder="e.g. siavash1996" [(ngModel)]="newPlay.user"><br><br>
-            <br>
+            
+            <button class="button" onclick="addSongCreator(['we will rock you Queen', 'wrecking ball miley cyrus'])">Add Your Top Hits</button><br><br>
 
-            <button class="button"  value="Submit" (click)="InfoSubmit()"></button>
+            <button class="button" style="margin-bottom: 20px;" value="Submit" (click)="InfoSubmit()">Add Songs to Playlist</button>
         </div>
     </div>
+    <br>
+    <br>
+
 
     <table>
         <thead>
