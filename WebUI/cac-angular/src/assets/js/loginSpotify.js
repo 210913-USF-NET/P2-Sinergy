@@ -262,11 +262,14 @@ function handleTracksResponse(){
 
 
 //LastFM-spotify together
-function playlistCreator(newPlaylist){
-    getUserDetails();
-    createNewPlaylist(newPlaylist, sessionStorage.currentUserId);
-    console.log("sessionUserId is "+sessionStorage.currentUserId)
-    
+function playlistCreator(songsToAdd){
+    songsToAdd.forEach(song => 
+        spotifySearch(song));
+        console.log(sessionStorage.searchedSong)
+    addSongsToPlaylist(sessionStorage.searchedSong, sessionStorage.newPlaylist);
+    console.log("Request made with "+ sessionStorage.searchedSong+"at playlist uri" +sessionStorage.newPlaylist)
+    sessionStorage.removeItem('searchedSong');
+
 }
 
 function addSongCreator(songsToAdd){
@@ -282,12 +285,14 @@ function addSongCreator(songsToAdd){
 }
 
 
-function createNewPlaylist(playlistName, userID){
+
+function createNewPlaylist(playlistName){
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", "https://api.spotify.com/v1/users/"+userID+"/playlists", true);
+    getUserDetails();
+    xhr.open("POST", "https://api.spotify.com/v1/users/"+sessionStorage.currentUserId+"/playlists", true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.setRequestHeader('Authorization', 'Bearer '+sessionStorage.authCode);
-    xhr.send(JSON.stringify({name: playlistName, public: false, description: "This playlist was brought to you by Cacophany Industries!"}));
+    xhr.send(JSON.stringify({name: "Cacophony", public: false, description: "This playlist was brought to you by Cacophany Industries!"}));
     xhr.onload = handlePlaylistResponse;
     
 }
