@@ -187,7 +187,7 @@ function handleUserId(){
     if ( this.status == 200 ){
         var data = JSON.parse(this.responseText);
         console.log(data.id);
-        return data.id;
+        sessionStorage.currentUserId= data.id;
     }
     else {
         console.log(this.responseText);
@@ -245,13 +245,18 @@ function handleTracksResponse(){
 
 
 //LastFM-spotify together
-function playlistCreator(playlistName, songsToAdd){
-    let userId = getUserDetails();
-    let playlistUri=createNewPlaylist(playlistName, userId);
-    let songlist="";
+function playlistCreator(newPlaylist, songsToAdd){
+    getUserDetails();
+    sessionStorage.removeItem('newPlaylist');
+    sessionStorage.newPlaylist=""
+    createNewPlaylist("sampletext", sessionStorage.currentUserId);
+    console.log("sessionUserId is "+sessionStorage.currentUserId)
     songsToAdd.forEach(song => 
-        songlist=+spotifySearch(song)+",");
-    addSongsToPlaylist(songlist, playlistUri);
+        spotifySearch(song));
+        console.log(sessionStorage.searchedSong)
+    addSongsToPlaylist(sessionStorage.searchedSong, sessionStorage.newPlaylist);
+    console.log("Request made with "+ sessionStorage.searchedSong+"at playlist uri" +sessionStorage.newPlaylist)
+    sessionStorage.removeItem('searchedSong');
 
 }
 
@@ -271,10 +276,10 @@ function addSongsToPlaylist(songsToAdd, playlistID){
     
     //Note that the songsToAdd MUST be in the form "spotify:track:<SongId>", and not just the SongId
 
-    xhr.open("POST", "https://api.spotify.com/v1/playlists/"+playlistID+"/tracks", true);
+    xhr.open("POST", "https://api.spotify.com/v1/playlists/"+playlistID+"/tracks?uris="+songsToAdd, true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.setRequestHeader('Authorization', 'Bearer '+sessionStorage.authCode);
-    xhr.send(JSON.stringify({uris: songsToAdd}));
+    xhr.send();
     xhr.onload = handlePlaylistResponse;
 }
 
@@ -282,7 +287,12 @@ function handlePlaylistResponse(){
     if ( this.status == 201 ){
         var data = JSON.parse(this.responseText);
         console.log(data.uri);
-        return data.uri;
+        if (data.uri!= undefined){
+
+            var  playlistUri = data.uri.slice(17, 40);
+            console.log('sliced data is '+playlistUri)
+            sessionStorage.newPlaylist= playlistUri;
+        }
     }
     else if ( this.status == 401 ){
         console.log("something wrong happened")
@@ -300,14 +310,27 @@ function spotifySearch(searchTerm){
     xhr.setRequestHeader('Authorization', 'Bearer '+sessionStorage.authCode);
     xhr.send();
     xhr.onload=handleSearchResponse;
+    
 }
 
 function handleSearchResponse(){
     if ( this.status == 200 ){
         var data = JSON.parse(this.responseText);
-        console.log(data.tracks.items[0].uri);
-        return data.tracks.items[0].uri;
-    }
+        data = data.tracks.items[0].uri;
+        var slicedData = data.slice(14, 40)
+        console.log("original data is "+data)
+        console.log("spliced data is "+slicedData)
+        console.log(sessionStorage.searchedSong);
+        if(sessionStorage.searchedSong == null || sessionStorage.searchedSong == "" || sessionStorage.searchedSong == undefined || sessionStorage.searchedSong == 'undefined'){
+            sessionStorage.searchedSong="spotify%3Atrack%3A"+slicedData+"%2C";
+            console.log("reset storage to "+sessionStorage.searchedSong)
+        }
+        else{
+
+            sessionStorage.searchedSong=sessionStorage.searchedSong+"spotify%3Atrack%3A"+slicedData+"%2C"
+            console.log("searched song is "+sessionStorage.searchedSong);}
+        }
+
     else if ( this.status == 401 ){
         console.log("something wrong happened")
     }
